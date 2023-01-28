@@ -126,7 +126,7 @@ namespace Vigils_book
         }
 
         private void UpdateCustomerRecord()
-        {
+        {/*  
             SQLiteConnection sqlConnection = new SQLiteConnection();
             sqlConnection.ConnectionString = "DataSource = bookList.db";
 
@@ -153,6 +153,7 @@ namespace Vigils_book
             myDataAdapterCustomerInformation.Fill(datatableCustomerInformation);
             sqlConnection.Close();
             dgvCustomerInformation.DataSource = datatableCustomerInformation;
+            */
         }
 
         private void BtnChangeCustomerInformation_Click(object sender, EventArgs e)
@@ -641,7 +642,7 @@ namespace Vigils_book
         }
 
         private void dgvCustomerBooks_SelectionChanged(object sender, EventArgs e)
-        {
+        {/*
             SQLiteConnection sqlConnection = new SQLiteConnection();
             sqlConnection.ConnectionString = "DataSource = bookList.db";
 
@@ -665,8 +666,60 @@ namespace Vigils_book
             }
 
 
-
+            */
         }
+        
+        private void btnSell_Click(object sender, EventArgs e)
+        {
 
+            SQLiteConnection sqlConnection = new SQLiteConnection();
+            sqlConnection.ConnectionString = "DataSource = bookList.db";
+
+
+            int wantedStock;
+            int totalStock;
+            string finalStock;
+            double totalCost;
+
+            totalStock  = Convert.ToInt32(txtReplaceBookStock.Text);
+            wantedStock = Convert.ToInt32(txtBooksToSell.Text);
+
+            
+
+            if (totalStock > wantedStock)
+            {
+
+                string finalCost = txtReplaceBookPrice.Text;
+                finalCost = finalCost.Substring(1);
+                Convert.ToDouble(finalCost);
+
+                totalCost = Convert.ToDouble(wantedStock) * Convert.ToDouble(finalCost);
+
+
+
+
+
+                //totalCost = Convert.ToDouble(wantedStock) * Convert.ToDouble(txtReplaceBookPrice.Text);
+
+
+
+
+                totalStock -= wantedStock;
+                finalStock = Convert.ToString(totalStock);
+
+                txtReplaceBookStock.Text = finalStock;
+                UpdateBookRecord();
+
+                
+
+                MessageBox.Show(wantedStock + " copies of the book " + Convert.ToString(txtReplaceBookTitle.Text) + " are being sold. final price is $" + totalCost);
+
+                txtBooksToSell.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("There are not enough of this book to buy.");
+            }
+        }
     }
 }
