@@ -635,7 +635,7 @@ namespace Vigils_book
                 textFileForSoldBooks.AppendLine(line);
             }
 
-            string fileName = @"soldBookList"
+            string fileName = @"soldBookList";
             System.IO.File.WriteAllText(fileName, textFileForSoldBooks.ToString());
 
         }
