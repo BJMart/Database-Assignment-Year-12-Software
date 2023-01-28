@@ -15,6 +15,7 @@ namespace Vigils_book
     {
         string selectedCustomerID = "";
         string selectedBookISBN = "";
+        string selectedCustomerBookISBN = "";
 
 
 
@@ -46,7 +47,7 @@ namespace Vigils_book
             var datatableCustomerInformation = new DataTable();
             var datatableCustomerBooks = new DataTable();
 
-
+            
             SQLiteDataAdapter myDataAdapterBooks = new SQLiteDataAdapter(commandTextBookList, sqlConnection);
             SQLiteDataAdapter myDataAdapterCustomerInformation = new SQLiteDataAdapter(commandTextCustomerInformation, sqlConnection);
             SQLiteDataAdapter myDataAdapterCustomerBooks = new SQLiteDataAdapter(commandTextCustomerBooks, sqlConnection);
@@ -58,7 +59,7 @@ namespace Vigils_book
             myDataAdapterCustomerInformation.Fill(datatableCustomerInformation);
             myDataAdapterCustomerBooks.Fill(datatableCustomerBooks);
             sqlConnection.Close();
-
+            
             dgvBookList.DataSource = datatableBooks;
             dgvCustomerInformation.DataSource = datatableCustomerInformation;
             dgvCustomerBooks.DataSource = datatableCustomerBooks;
@@ -113,8 +114,15 @@ namespace Vigils_book
             sqlConnection.Close();
             MessageBox.Show("Your Data is saved", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            //Refresh Data
-            ReadData();
+
+
+            string commandTextCustomerInformation = "Select * From CustomerList";
+            var datatableCustomerInformation = new DataTable();
+            SQLiteDataAdapter myDataAdapterCustomerInformation = new SQLiteDataAdapter(commandTextCustomerInformation, sqlConnection);
+            sqlConnection.Open();
+            myDataAdapterCustomerInformation.Fill(datatableCustomerInformation);
+            sqlConnection.Close();
+            dgvCustomerInformation.DataSource = datatableCustomerInformation;
         }
 
         private void UpdateCustomerRecord()
@@ -138,7 +146,13 @@ namespace Vigils_book
             sqlConnection.Close();
             MessageBox.Show("Your Customer data is updated", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            ReadData();
+            string commandTextCustomerInformation = "Select * From CustomerList";
+            var datatableCustomerInformation = new DataTable();
+            SQLiteDataAdapter myDataAdapterCustomerInformation = new SQLiteDataAdapter(commandTextCustomerInformation, sqlConnection);
+            sqlConnection.Open();
+            myDataAdapterCustomerInformation.Fill(datatableCustomerInformation);
+            sqlConnection.Close();
+            dgvCustomerInformation.DataSource = datatableCustomerInformation;
         }
 
         private void BtnChangeCustomerInformation_Click(object sender, EventArgs e)
@@ -175,7 +189,13 @@ namespace Vigils_book
                 sqlConnection.Close();
 
 
-                ReadData();
+                string commandTextCustomerInformation = "Select * From CustomerList";
+                var datatableCustomerInformation = new DataTable();
+                SQLiteDataAdapter myDataAdapterCustomerInformation = new SQLiteDataAdapter(commandTextCustomerInformation, sqlConnection);
+                sqlConnection.Open();
+                myDataAdapterCustomerInformation.Fill(datatableCustomerInformation);
+                sqlConnection.Close();
+                dgvCustomerInformation.DataSource = datatableCustomerInformation;
 
             }
         }
@@ -221,10 +241,9 @@ namespace Vigils_book
 
             dgvCustomerInformation.DataSource = datatableCustomerInformation;
 
+            cmbSearchCatCustomer.SelectedIndex = 0;
             txtSearchCustomer.Text = "";
         }
-
-
 
         private void dgvBookList_SelectionChanged(object sender, EventArgs e)
         {
@@ -252,9 +271,6 @@ namespace Vigils_book
                 txtReplaceBookStock.Text = datatableBookList.Rows[0]["bookStock"].ToString();
                 txtReplaceBookPrice.Text = datatableBookList.Rows[0]["bookPrice"].ToString();
 
-
-
-
                 sqlConnection.Close();
             }
 
@@ -274,7 +290,6 @@ namespace Vigils_book
             sqlCommandChangeCustomerInformation.Connection = sqlConnection;
             sqlCommandChangeCustomerInformation.CommandType = CommandType.Text;
             sqlCommandChangeCustomerInformation.CommandText = "UPDATE BookList SET bookTitle=@bookTitle, bookAuthor=@bookAuthor, bookYearOfPublication=@bookYearOfPublication, bookPublisher=@bookPublisher, bookStock=@bookStock, bookPrice=@bookPrice WHERE ISBN=@ISBN";
-
             sqlCommandChangeCustomerInformation.Parameters.AddWithValue("@bookTitle", txtReplaceBookTitle.Text);
             sqlCommandChangeCustomerInformation.Parameters.AddWithValue("@bookAuthor", txtReplaceBookAuthor.Text);
             sqlCommandChangeCustomerInformation.Parameters.AddWithValue("@bookYearOfPublication", txtReplaceBookYearOfPublication.Text);
@@ -288,7 +303,13 @@ namespace Vigils_book
             sqlConnection.Close();
             MessageBox.Show("Your Customer data is updated", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            ReadData();
+
+            string commandTextBookList = "Select * From BookList";
+            var datatableBooks = new DataTable();
+            SQLiteDataAdapter myDataAdapterBooks = new SQLiteDataAdapter(commandTextBookList, sqlConnection);
+            sqlConnection.Open();
+            myDataAdapterBooks.Fill(datatableBooks);
+            dgvBookList.DataSource = datatableBooks;
         }
 
         private void btnChangeBook_Click(object sender, EventArgs e)
@@ -328,8 +349,13 @@ namespace Vigils_book
             sqlConnection.Close();
             MessageBox.Show("Your Data is saved", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            //Refresh Data
-            ReadData();
+
+            string commandTextBookList = "Select * From BookList";
+            var datatableBooks = new DataTable();
+            SQLiteDataAdapter myDataAdapterBooks = new SQLiteDataAdapter(commandTextBookList, sqlConnection);
+            sqlConnection.Open();
+            myDataAdapterBooks.Fill(datatableBooks);
+            dgvBookList.DataSource = datatableBooks;
         }
 
         private void btnRemoveBook_Click(object sender, EventArgs e)
@@ -353,8 +379,12 @@ namespace Vigils_book
                 sqlConnection.Close();
 
 
-                ReadData();
-
+                string commandTextBookList = "Select * From BookList";
+                var datatableBooks = new DataTable();
+                SQLiteDataAdapter myDataAdapterBooks = new SQLiteDataAdapter(commandTextBookList, sqlConnection);
+                sqlConnection.Open();
+                myDataAdapterBooks.Fill(datatableBooks);
+                dgvBookList.DataSource = datatableBooks;
             }
         }
 
@@ -381,5 +411,262 @@ namespace Vigils_book
                 MessageBox.Show("There are no books with this information.");
             }
         }
+
+        private void btnResetBookSearch_Click(object sender, EventArgs e)
+        {
+            SQLiteConnection sqlConnection = new SQLiteConnection();
+            sqlConnection.ConnectionString = "DataSource = bookList.db";
+
+            string commandTextBookInformation = "Select * From BookList";
+
+            var datatableBookInformation = new DataTable();
+
+            SQLiteDataAdapter myDataAdapterBookInformation = new SQLiteDataAdapter(commandTextBookInformation, sqlConnection);
+
+            sqlConnection.Open();
+            myDataAdapterBookInformation.Fill(datatableBookInformation);
+
+            dgvBookList.DataSource = datatableBookInformation;
+
+            cmbSearchCatBook.SelectedIndex = 0;
+            txtSearchBook.Text = "";
+
+        }
+
+        private void btnAddCustomerBook_Click(object sender, EventArgs e)
+        {
+            SQLiteConnection sqlConnectionBookList = new SQLiteConnection();
+            SQLiteConnection sqlConnectionCustomerBooksList = new SQLiteConnection();
+            SQLiteCommand sqlCommandInsertCustomerBookInformation = new SQLiteCommand();
+
+            sqlConnectionBookList.ConnectionString = "DataSource = bookList.db";
+            sqlConnectionCustomerBooksList.ConnectionString = "DataSource = bookList.db";
+
+
+            sqlCommandInsertCustomerBookInformation.Connection = sqlConnectionCustomerBooksList;
+            sqlCommandInsertCustomerBookInformation.CommandType = CommandType.Text;
+            sqlCommandInsertCustomerBookInformation.CommandText = "INSERT into CustomerBooks (ISBN, bookTitle, bookAuthor, bookYearOfPublication, bookPublisher, bookStockWanted, bookPrice) values(@ISBN, @bookTitle, @bookAuthor, @bookYearOfPublication, @bookPublisher, @bookStockWanted, @bookPrice)";
+            sqlCommandInsertCustomerBookInformation.Parameters.AddWithValue("@ISBN", txtReplaceBookISBN.Text);
+            sqlCommandInsertCustomerBookInformation.Parameters.AddWithValue("@bookTitle", txtReplaceBookTitle.Text);
+            sqlCommandInsertCustomerBookInformation.Parameters.AddWithValue("@bookAuthor", txtReplaceBookAuthor.Text);
+            sqlCommandInsertCustomerBookInformation.Parameters.AddWithValue("@bookYearOfPublication", txtReplaceBookYearOfPublication.Text);
+            sqlCommandInsertCustomerBookInformation.Parameters.AddWithValue("@bookPublisher", txtReplaceBookPublisher.Text);
+            sqlCommandInsertCustomerBookInformation.Parameters.AddWithValue("@bookStockWanted", txtCustomerStockWanted.Text);
+            sqlCommandInsertCustomerBookInformation.Parameters.AddWithValue("@bookPrice", txtReplaceBookPrice.Text);
+
+            int wantedStock;
+            int totalStock;
+            string finalStock;
+            int.TryParse(txtReplaceBookStock.Text, out totalStock);
+
+            if (int.TryParse(txtCustomerStockWanted.Text, out wantedStock))
+            {
+                if (wantedStock < totalStock)
+                {
+                    sqlConnectionCustomerBooksList.Open();
+                    sqlCommandInsertCustomerBookInformation.ExecuteNonQuery();
+                    sqlConnectionCustomerBooksList.Close();
+
+                    totalStock -= wantedStock;
+                    finalStock = Convert.ToString(totalStock);
+
+
+                    txtReplaceBookStock.Text = finalStock;
+                    UpdateBookRecord();
+
+
+                    string commandTextBookList = "Select * From BookList";
+                    string commandTextCustomerBooks = "Select * From CustomerBooks";
+                    var datatableBookList = new DataTable();
+                    var datatableCustomerBooks = new DataTable();
+                    SQLiteDataAdapter myDataAdapterBookList = new SQLiteDataAdapter(commandTextBookList, sqlConnectionBookList);
+                    SQLiteDataAdapter myDataAdapterCustomerBooks = new SQLiteDataAdapter(commandTextCustomerBooks, sqlConnectionCustomerBooksList);
+                    myDataAdapterBookList.Fill(datatableBookList);
+                    myDataAdapterCustomerBooks.Fill(datatableCustomerBooks);
+                    dgvBookList.DataSource = datatableBookList;
+                    dgvCustomerBooks.DataSource = datatableCustomerBooks;
+                }
+                else
+                {
+                    MessageBox.Show("There are not enough of this book.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Book amount not valid.");
+            }
+        }
+
+        private void btnRemoveCustomerBook_Click(object sender, EventArgs e)
+        {
+            
+
+            if (MessageBox.Show("Are you sure you want to remove this book?", "Confirmation", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                { /*
+                    int currentStock = Convert.ToInt32(txtReplaceBookStock.Text);
+                    int customerStockToReturn = Convert.ToInt32(txtCustomerStockWanted.Text);
+
+                    int finalStock = currentStock + customerStockToReturn;
+
+                    txtReplaceBookStock.Text = Convert.ToString(finalStock);
+                    */
+
+
+                    /*
+                    SQLiteConnection sqlConnection = new SQLiteConnection();
+                    sqlConnection.ConnectionString = "DataSource = bookList.db";
+
+                    SQLiteCommand sqlCommandAddBooksBackToBookList = new SQLiteCommand();
+                    SQLiteCommand sqlCommandRemoveBookFromCustomer = new SQLiteCommand();
+
+
+                    UpdateBookRecord();
+
+
+                    sqlCommandRemoveBookFromCustomer.Connection = sqlConnection;
+                    sqlCommandRemoveBookFromCustomer.CommandType = CommandType.Text;
+                    sqlCommandRemoveBookFromCustomer.CommandText = "DELETE FROM CustomerBooks WHERE ISBN=@ISBN";
+                    sqlCommandRemoveBookFromCustomer.Parameters.AddWithValue("@ISBN", selectedCustomerBookISBN);
+
+
+                    sqlConnection.Open();
+                    sqlCommandAddBooksBackToBookList.ExecuteNonQuery();
+                    sqlConnection.Close();
+
+
+                    ReadData();
+                    */
+                }
+
+
+                int currentStock = Convert.ToInt32(txtReplaceBookStock.Text);
+                int customerStockToReturn = Convert.ToInt32(txtCustomerStockWanted.Text);
+
+                int totalStock = currentStock + customerStockToReturn;
+
+                txtReplaceBookStock.Text = totalStock.ToString();
+
+
+
+            }
+
+
+
+
+
+
+
+        }
+
+        private void btnSellBooks_Click(object sender, EventArgs e)
+        {
+            {
+                /*
+                SQLiteConnection sqlConnection = new SQLiteConnection();
+                sqlConnection.ConnectionString = "DataSource = bookList.db";
+
+
+                string commandTextCustomerInformation = "Select * From CustomerList";
+                string commandTextCustomerBooks = "Select * From CustomerBooks";
+                string commandTextPastSales = "Select * From PastSales";
+
+
+
+
+                var datatableCustomerInformation = new DataTable();
+                var datatableCustomerBooks = new DataTable();
+                var datatablePastSales = new DataTable();
+
+                SQLiteDataAdapter myDataAdapterCustomerInformation = new SQLiteDataAdapter(commandTextCustomerInformation, sqlConnection);
+                SQLiteDataAdapter myDataAdapterCustomerBooks = new SQLiteDataAdapter(commandTextCustomerBooks, sqlConnection);
+                SQLiteDataAdapter myDataAdapterPastSales = new SQLiteDataAdapter(commandTextPastSales, sqlConnection);
+
+                myDataAdapterCustomerInformation.Fill(datatableCustomerInformation);
+                myDataAdapterCustomerBooks.Fill(datatableCustomerBooks);
+                myDataAdapterPastSales.Fill(datatablePastSales);
+
+                dgvCustomerInformation.DataSource = datatableCustomerInformation;
+                dgvCustomerBooks.DataSource = datatableCustomerBooks;
+                */
+            }
+
+            { 
+            /*
+            SQLiteConnection sqlConnection = new SQLiteConnection();
+            sqlConnection.ConnectionString = "DataSource = bookList.db";
+
+
+            selectedCustomerID = dgvCustomerInformation.SelectedRows[0].Cells[0].Value.ToString();
+
+            string commandTextCustomerInformation = "SELECT * FROM CustomerList WHERE customerID=" + selectedCustomerID;
+            string commandTextCustomerBooks = "SELECT * FROM CustomerBooks WHERE ISBN=@ISBN";
+
+            var datatableCustomerBooks = new DataTable();
+            var datatableCustomerInformation = new DataTable();
+
+            SQLiteDataAdapter myDataAdapterCustomerInformation = new SQLiteDataAdapter(commandTextCustomerInformation, sqlConnection);
+            SQLiteDataAdapter myDataAdapterCustomerBooks = new SQLiteDataAdapter(commandTextCustomerInformation, sqlConnection);
+
+            sqlConnection.Open();
+
+            myDataAdapterCustomerInformation.Fill(datatableCustomerBooks);
+
+            string customerFirstName = datatableCustomerInformation.Rows[0]["customerFirstName"].ToString();
+            string customerLasName = datatableCustomerInformation.Rows[0]["customerLastName"].ToString();
+            string bookTitle = datatableCustomerInformation.Rows[0][""].ToString();
+
+            sqlConnection.Close();
+            */
+        }
+
+
+        
+
+            var textFileForSoldBooks = new StringBuilder();
+
+            for(int i = 0;  i < dgvCustomerBooks.Rows.Count - 1; i++)
+            {
+                string line = "";
+                for (int j = 0; j < dgvCustomerBooks.Columns.Count; j++)
+                {
+                    line += dgvCustomerBooks.Rows[i].Cells[j].Value.ToString() + "\t" + "|";
+                }
+                textFileForSoldBooks.AppendLine(line);
+            }
+
+            string fileName = @"soldBookList"
+            System.IO.File.WriteAllText(fileName, textFileForSoldBooks.ToString());
+
+        }
+
+        private void dgvCustomerBooks_SelectionChanged(object sender, EventArgs e)
+        {
+            SQLiteConnection sqlConnection = new SQLiteConnection();
+            sqlConnection.ConnectionString = "DataSource = bookList.db";
+
+
+            if (dgvCustomerBooks.SelectedRows.Count > 0)
+            {
+                selectedCustomerBookISBN = dgvCustomerBooks.SelectedRows[0].Cells[0].Value.ToString();
+
+                string commandTextCustomerBooks = "SELECT * FROM CustomerBooks WHERE ISBN=" + selectedCustomerBookISBN;
+
+                var datatableCustomerBooks = new DataTable();
+                SQLiteDataAdapter myDataAdapterBookList = new SQLiteDataAdapter(commandTextCustomerBooks, sqlConnection);
+
+                sqlConnection.Open();
+
+                myDataAdapterBookList.Fill(datatableCustomerBooks);
+
+                txtCustomerStockWanted.Text = datatableCustomerBooks.Rows[0]["bookStockWanted"].ToString();
+
+                sqlConnection.Close();
+            }
+
+
+
+        }
+
     }
 }
