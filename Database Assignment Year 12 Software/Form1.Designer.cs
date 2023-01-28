@@ -28,14 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnSearchBook = new System.Windows.Forms.Button();
             this.dgvBookList = new System.Windows.Forms.DataGridView();
-            this.dgvCustomerBooks = new System.Windows.Forms.DataGridView();
             this.btnChangeCustomerInformation = new System.Windows.Forms.Button();
             this.dgvCustomerInformation = new System.Windows.Forms.DataGridView();
-            this.btnAddCustomerBook = new System.Windows.Forms.Button();
-            this.btnRemoveCustomerBook = new System.Windows.Forms.Button();
-            this.btnSellBooks = new System.Windows.Forms.Button();
             this.btnSearchCustomer = new System.Windows.Forms.Button();
             this.btnChangeBook = new System.Windows.Forms.Button();
             this.txtReplaceCustomerPhoneNumber = new System.Windows.Forms.TextBox();
@@ -48,19 +44,9 @@
             this.txtReplaceBookStock = new System.Windows.Forms.TextBox();
             this.txtReplaceBookPublisher = new System.Windows.Forms.TextBox();
             this.txtReplaceBookPrice = new System.Windows.Forms.TextBox();
-            this.txtSearchISBN = new System.Windows.Forms.TextBox();
-            this.txtSearchBookName = new System.Windows.Forms.TextBox();
-            this.txtSearchAuthor = new System.Windows.Forms.TextBox();
-            this.txtCustomerStockWanted = new System.Windows.Forms.TextBox();
             this.btnRemoveCustomer = new System.Windows.Forms.Button();
             this.cmbSearchCatCustomer = new System.Windows.Forms.ComboBox();
             this.txtSearchCustomer = new System.Windows.Forms.TextBox();
-            this.txtSearchCustomerName = new System.Windows.Forms.TextBox();
-            this.txtSearchCustomerLastName = new System.Windows.Forms.TextBox();
-            this.txtSearchCustomerPhoneNumber = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.btnResetCustomerSearch = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -78,24 +64,22 @@
             this.btnResetBookSearch = new System.Windows.Forms.Button();
             this.cmbSearchCatBook = new System.Windows.Forms.ComboBox();
             this.txtSearchBook = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.txtBooksToSell = new System.Windows.Forms.TextBox();
-            this.btnSell = new System.Windows.Forms.Button();
+            this.txtBookStockCustomerWants = new System.Windows.Forms.TextBox();
+            this.btnSellBook = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomerBooks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomerInformation)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnSearch
+            // btnSearchBook
             // 
-            this.btnSearch.Location = new System.Drawing.Point(443, 556);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(150, 44);
-            this.btnSearch.TabIndex = 2;
-            this.btnSearch.Text = "Search Book";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.btnSearchBook.Location = new System.Drawing.Point(443, 556);
+            this.btnSearchBook.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSearchBook.Name = "btnSearchBook";
+            this.btnSearchBook.Size = new System.Drawing.Size(150, 44);
+            this.btnSearchBook.TabIndex = 2;
+            this.btnSearchBook.Text = "Search Book";
+            this.btnSearchBook.UseVisualStyleBackColor = true;
+            this.btnSearchBook.Click += new System.EventHandler(this.btnSearchBook_Click);
             // 
             // dgvBookList
             // 
@@ -107,17 +91,6 @@
             this.dgvBookList.Size = new System.Drawing.Size(912, 256);
             this.dgvBookList.TabIndex = 0;
             this.dgvBookList.SelectionChanged += new System.EventHandler(this.dgvBookList_SelectionChanged);
-            // 
-            // dgvCustomerBooks
-            // 
-            this.dgvCustomerBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCustomerBooks.Location = new System.Drawing.Point(1366, 398);
-            this.dgvCustomerBooks.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvCustomerBooks.Name = "dgvCustomerBooks";
-            this.dgvCustomerBooks.RowHeadersWidth = 51;
-            this.dgvCustomerBooks.Size = new System.Drawing.Size(315, 256);
-            this.dgvCustomerBooks.TabIndex = 0;
-            this.dgvCustomerBooks.SelectionChanged += new System.EventHandler(this.dgvCustomerBooks_SelectionChanged);
             // 
             // btnChangeCustomerInformation
             // 
@@ -140,39 +113,6 @@
             this.dgvCustomerInformation.Size = new System.Drawing.Size(349, 254);
             this.dgvCustomerInformation.TabIndex = 0;
             this.dgvCustomerInformation.SelectionChanged += new System.EventHandler(this.dgvCustomerInformation_SelectionChanged);
-            // 
-            // btnAddCustomerBook
-            // 
-            this.btnAddCustomerBook.Location = new System.Drawing.Point(1240, 549);
-            this.btnAddCustomerBook.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAddCustomerBook.Name = "btnAddCustomerBook";
-            this.btnAddCustomerBook.Size = new System.Drawing.Size(119, 44);
-            this.btnAddCustomerBook.TabIndex = 2;
-            this.btnAddCustomerBook.Text = "Add Book to Customer";
-            this.btnAddCustomerBook.UseVisualStyleBackColor = true;
-            this.btnAddCustomerBook.Click += new System.EventHandler(this.btnAddCustomerBook_Click);
-            // 
-            // btnRemoveCustomerBook
-            // 
-            this.btnRemoveCustomerBook.Location = new System.Drawing.Point(1382, 549);
-            this.btnRemoveCustomerBook.Margin = new System.Windows.Forms.Padding(4);
-            this.btnRemoveCustomerBook.Name = "btnRemoveCustomerBook";
-            this.btnRemoveCustomerBook.Size = new System.Drawing.Size(119, 44);
-            this.btnRemoveCustomerBook.TabIndex = 2;
-            this.btnRemoveCustomerBook.Text = "Remove Book From Customer";
-            this.btnRemoveCustomerBook.UseVisualStyleBackColor = true;
-            this.btnRemoveCustomerBook.Click += new System.EventHandler(this.btnRemoveCustomerBook_Click);
-            // 
-            // btnSellBooks
-            // 
-            this.btnSellBooks.Location = new System.Drawing.Point(1558, 547);
-            this.btnSellBooks.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSellBooks.Name = "btnSellBooks";
-            this.btnSellBooks.Size = new System.Drawing.Size(101, 44);
-            this.btnSellBooks.TabIndex = 2;
-            this.btnSellBooks.Text = "Sell Books";
-            this.btnSellBooks.UseVisualStyleBackColor = true;
-            this.btnSellBooks.Click += new System.EventHandler(this.btnSellBooks_Click);
             // 
             // btnSearchCustomer
             // 
@@ -294,49 +234,6 @@
             this.txtReplaceBookPrice.Size = new System.Drawing.Size(154, 32);
             this.txtReplaceBookPrice.TabIndex = 17;
             // 
-            // txtSearchISBN
-            // 
-            this.txtSearchISBN.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSearchISBN.Location = new System.Drawing.Point(1071, 619);
-            this.txtSearchISBN.Margin = new System.Windows.Forms.Padding(4);
-            this.txtSearchISBN.Multiline = true;
-            this.txtSearchISBN.Name = "txtSearchISBN";
-            this.txtSearchISBN.Size = new System.Drawing.Size(150, 44);
-            this.txtSearchISBN.TabIndex = 18;
-            this.txtSearchISBN.Text = "Search ISBN";
-            // 
-            // txtSearchBookName
-            // 
-            this.txtSearchBookName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSearchBookName.Location = new System.Drawing.Point(1391, 619);
-            this.txtSearchBookName.Margin = new System.Windows.Forms.Padding(4);
-            this.txtSearchBookName.Multiline = true;
-            this.txtSearchBookName.Name = "txtSearchBookName";
-            this.txtSearchBookName.Size = new System.Drawing.Size(150, 44);
-            this.txtSearchBookName.TabIndex = 19;
-            this.txtSearchBookName.Text = "Search Book Name";
-            // 
-            // txtSearchAuthor
-            // 
-            this.txtSearchAuthor.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSearchAuthor.Location = new System.Drawing.Point(1231, 619);
-            this.txtSearchAuthor.Margin = new System.Windows.Forms.Padding(4);
-            this.txtSearchAuthor.Multiline = true;
-            this.txtSearchAuthor.Name = "txtSearchAuthor";
-            this.txtSearchAuthor.Size = new System.Drawing.Size(150, 44);
-            this.txtSearchAuthor.TabIndex = 20;
-            this.txtSearchAuthor.Text = "Search Author";
-            // 
-            // txtCustomerStockWanted
-            // 
-            this.txtCustomerStockWanted.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtCustomerStockWanted.Location = new System.Drawing.Point(1112, 549);
-            this.txtCustomerStockWanted.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCustomerStockWanted.Multiline = true;
-            this.txtCustomerStockWanted.Name = "txtCustomerStockWanted";
-            this.txtCustomerStockWanted.Size = new System.Drawing.Size(120, 44);
-            this.txtCustomerStockWanted.TabIndex = 21;
-            // 
             // btnRemoveCustomer
             // 
             this.btnRemoveCustomer.Location = new System.Drawing.Point(1115, 207);
@@ -371,60 +268,6 @@
             this.txtSearchCustomer.Size = new System.Drawing.Size(206, 35);
             this.txtSearchCustomer.TabIndex = 30;
             // 
-            // txtSearchCustomerName
-            // 
-            this.txtSearchCustomerName.Location = new System.Drawing.Point(29, 26);
-            this.txtSearchCustomerName.Margin = new System.Windows.Forms.Padding(4);
-            this.txtSearchCustomerName.Multiline = true;
-            this.txtSearchCustomerName.Name = "txtSearchCustomerName";
-            this.txtSearchCustomerName.Size = new System.Drawing.Size(258, 35);
-            this.txtSearchCustomerName.TabIndex = 5;
-            // 
-            // txtSearchCustomerLastName
-            // 
-            this.txtSearchCustomerLastName.Location = new System.Drawing.Point(29, 96);
-            this.txtSearchCustomerLastName.Margin = new System.Windows.Forms.Padding(4);
-            this.txtSearchCustomerLastName.Multiline = true;
-            this.txtSearchCustomerLastName.Name = "txtSearchCustomerLastName";
-            this.txtSearchCustomerLastName.Size = new System.Drawing.Size(258, 35);
-            this.txtSearchCustomerLastName.TabIndex = 6;
-            // 
-            // txtSearchCustomerPhoneNumber
-            // 
-            this.txtSearchCustomerPhoneNumber.Location = new System.Drawing.Point(29, 166);
-            this.txtSearchCustomerPhoneNumber.Margin = new System.Windows.Forms.Padding(4);
-            this.txtSearchCustomerPhoneNumber.Multiline = true;
-            this.txtSearchCustomerPhoneNumber.Name = "txtSearchCustomerPhoneNumber";
-            this.txtSearchCustomerPhoneNumber.Size = new System.Drawing.Size(258, 35);
-            this.txtSearchCustomerPhoneNumber.TabIndex = 7;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(29, 6);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(153, 16);
-            this.label4.TabIndex = 26;
-            this.label4.Text = "Search Customer Name:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(29, 76);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(181, 16);
-            this.label5.TabIndex = 27;
-            this.label5.Text = "Search Customer Last Name:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(29, 146);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(206, 16);
-            this.label6.TabIndex = 28;
-            this.label6.Text = "Search Customer Phone Number:";
-            // 
             // btnResetCustomerSearch
             // 
             this.btnResetCustomerSearch.Location = new System.Drawing.Point(516, 207);
@@ -432,7 +275,7 @@
             this.btnResetCustomerSearch.Name = "btnResetCustomerSearch";
             this.btnResetCustomerSearch.Size = new System.Drawing.Size(103, 54);
             this.btnResetCustomerSearch.TabIndex = 31;
-            this.btnResetCustomerSearch.Text = "Reset Book Search";
+            this.btnResetCustomerSearch.Text = "Reset Customer Search";
             this.btnResetCustomerSearch.UseVisualStyleBackColor = true;
             this.btnResetCustomerSearch.Click += new System.EventHandler(this.btnResetCustomerSearch_Click);
             // 
@@ -651,49 +494,34 @@
             this.txtSearchBook.Size = new System.Drawing.Size(206, 35);
             this.txtSearchBook.TabIndex = 49;
             // 
-            // textBox13
+            // txtBookStockCustomerWants
             // 
-            this.textBox13.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox13.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox13.ForeColor = System.Drawing.Color.Black;
-            this.textBox13.Location = new System.Drawing.Point(1112, 529);
-            this.textBox13.Multiline = true;
-            this.textBox13.Name = "textBox13";
-            this.textBox13.ReadOnly = true;
-            this.textBox13.Size = new System.Drawing.Size(89, 21);
-            this.textBox13.TabIndex = 50;
-            this.textBox13.Text = "Books to Sell:";
+            this.txtBookStockCustomerWants.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBookStockCustomerWants.Location = new System.Drawing.Point(647, 556);
+            this.txtBookStockCustomerWants.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBookStockCustomerWants.Multiline = true;
+            this.txtBookStockCustomerWants.Name = "txtBookStockCustomerWants";
+            this.txtBookStockCustomerWants.Size = new System.Drawing.Size(120, 44);
+            this.txtBookStockCustomerWants.TabIndex = 51;
             // 
-            // txtBooksToSell
+            // btnSellBook
             // 
-            this.txtBooksToSell.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtBooksToSell.Location = new System.Drawing.Point(647, 556);
-            this.txtBooksToSell.Margin = new System.Windows.Forms.Padding(4);
-            this.txtBooksToSell.Multiline = true;
-            this.txtBooksToSell.Name = "txtBooksToSell";
-            this.txtBooksToSell.Size = new System.Drawing.Size(120, 44);
-            this.txtBooksToSell.TabIndex = 51;
-            // 
-            // btnSell
-            // 
-            this.btnSell.Location = new System.Drawing.Point(647, 608);
-            this.btnSell.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSell.Name = "btnSell";
-            this.btnSell.Size = new System.Drawing.Size(101, 44);
-            this.btnSell.TabIndex = 52;
-            this.btnSell.Text = "Sell Books";
-            this.btnSell.UseVisualStyleBackColor = true;
-            this.btnSell.Click += new System.EventHandler(this.btnSell_Click);
+            this.btnSellBook.Location = new System.Drawing.Point(647, 608);
+            this.btnSellBook.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSellBook.Name = "btnSellBook";
+            this.btnSellBook.Size = new System.Drawing.Size(101, 44);
+            this.btnSellBook.TabIndex = 52;
+            this.btnSellBook.Text = "Sell Book";
+            this.btnSellBook.UseVisualStyleBackColor = true;
+            this.btnSellBook.Click += new System.EventHandler(this.btnSellBook_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1694, 662);
-            this.Controls.Add(this.btnSell);
-            this.Controls.Add(this.txtBooksToSell);
-            this.Controls.Add(this.textBox13);
+            this.ClientSize = new System.Drawing.Size(1263, 662);
+            this.Controls.Add(this.btnSellBook);
+            this.Controls.Add(this.txtBookStockCustomerWants);
             this.Controls.Add(this.txtSearchBook);
             this.Controls.Add(this.cmbSearchCatBook);
             this.Controls.Add(this.btnResetBookSearch);
@@ -713,14 +541,7 @@
             this.Controls.Add(this.btnResetCustomerSearch);
             this.Controls.Add(this.txtSearchCustomer);
             this.Controls.Add(this.cmbSearchCatCustomer);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnRemoveCustomer);
-            this.Controls.Add(this.txtCustomerStockWanted);
-            this.Controls.Add(this.txtSearchAuthor);
-            this.Controls.Add(this.txtSearchBookName);
-            this.Controls.Add(this.txtSearchISBN);
             this.Controls.Add(this.txtReplaceBookPrice);
             this.Controls.Add(this.txtReplaceBookPublisher);
             this.Controls.Add(this.txtReplaceBookStock);
@@ -731,17 +552,10 @@
             this.Controls.Add(this.txtReplaceCustomerPhoneNumber);
             this.Controls.Add(this.txtReplaceCustomerLastName);
             this.Controls.Add(this.txtReplaceCustomerName);
-            this.Controls.Add(this.txtSearchCustomerPhoneNumber);
-            this.Controls.Add(this.txtSearchCustomerLastName);
-            this.Controls.Add(this.txtSearchCustomerName);
             this.Controls.Add(this.btnChangeBook);
             this.Controls.Add(this.btnSearchCustomer);
             this.Controls.Add(this.btnChangeCustomerInformation);
-            this.Controls.Add(this.btnSellBooks);
-            this.Controls.Add(this.btnRemoveCustomerBook);
-            this.Controls.Add(this.btnAddCustomerBook);
-            this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.dgvCustomerBooks);
+            this.Controls.Add(this.btnSearchBook);
             this.Controls.Add(this.dgvCustomerInformation);
             this.Controls.Add(this.dgvBookList);
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -749,7 +563,6 @@
             this.Text = "McMillans Book Store";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomerBooks)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomerInformation)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -757,14 +570,10 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnSearchBook;
         private System.Windows.Forms.DataGridView dgvBookList;
-        private System.Windows.Forms.DataGridView dgvCustomerBooks;
         private System.Windows.Forms.Button btnChangeCustomerInformation;
         private System.Windows.Forms.DataGridView dgvCustomerInformation;
-        private System.Windows.Forms.Button btnAddCustomerBook;
-        private System.Windows.Forms.Button btnRemoveCustomerBook;
-        private System.Windows.Forms.Button btnSellBooks;
         private System.Windows.Forms.Button btnSearchCustomer;
         private System.Windows.Forms.Button btnChangeBook;
         private System.Windows.Forms.TextBox txtReplaceCustomerPhoneNumber;
@@ -777,19 +586,9 @@
         private System.Windows.Forms.TextBox txtReplaceBookStock;
         private System.Windows.Forms.TextBox txtReplaceBookPublisher;
         private System.Windows.Forms.TextBox txtReplaceBookPrice;
-        private System.Windows.Forms.TextBox txtSearchISBN;
-        private System.Windows.Forms.TextBox txtSearchBookName;
-        private System.Windows.Forms.TextBox txtSearchAuthor;
-        private System.Windows.Forms.TextBox txtCustomerStockWanted;
         private System.Windows.Forms.Button btnRemoveCustomer;
         private System.Windows.Forms.ComboBox cmbSearchCatCustomer;
         private System.Windows.Forms.TextBox txtSearchCustomer;
-        private System.Windows.Forms.TextBox txtSearchCustomerName;
-        private System.Windows.Forms.TextBox txtSearchCustomerLastName;
-        private System.Windows.Forms.TextBox txtSearchCustomerPhoneNumber;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnResetCustomerSearch;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
@@ -807,9 +606,8 @@
         private System.Windows.Forms.Button btnResetBookSearch;
         private System.Windows.Forms.ComboBox cmbSearchCatBook;
         private System.Windows.Forms.TextBox txtSearchBook;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox txtBooksToSell;
-        private System.Windows.Forms.Button btnSell;
+        private System.Windows.Forms.TextBox txtBookStockCustomerWants;
+        private System.Windows.Forms.Button btnSellBook;
     }
 }
 
