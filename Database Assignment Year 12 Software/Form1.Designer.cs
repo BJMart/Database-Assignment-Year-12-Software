@@ -72,14 +72,14 @@
             // 
             // btnSearchBook
             // 
-            this.btnSearch.Location = new System.Drawing.Point(443, 556);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(150, 44);
-            this.btnSearch.TabIndex = 2;
-            this.btnSearch.Text = "Search Book";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.btnSearchBook.AutoSize = true;
+            this.btnSearchBook.Location = new System.Drawing.Point(261, 442);
+            this.btnSearchBook.Name = "btnSearchBook";
+            this.btnSearchBook.Size = new System.Drawing.Size(112, 36);
+            this.btnSearchBook.TabIndex = 2;
+            this.btnSearchBook.Text = "Search Book";
+            this.btnSearchBook.UseVisualStyleBackColor = true;
+            this.btnSearchBook.Click += new System.EventHandler(this.btnSearchBook_Click);
             // 
             // dgvBookList
             // 
@@ -89,7 +89,7 @@
             this.dgvBookList.Location = new System.Drawing.Point(248, 228);
             this.dgvBookList.Name = "dgvBookList";
             this.dgvBookList.RowHeadersWidth = 51;
-            this.dgvBookList.Size = new System.Drawing.Size(577, 256);
+            this.dgvBookList.Size = new System.Drawing.Size(684, 208);
             this.dgvBookList.TabIndex = 0;
             this.dgvBookList.SelectionChanged += new System.EventHandler(this.dgvBookList_SelectionChanged);
             // 
@@ -497,24 +497,21 @@
             this.txtSearchBook.Size = new System.Drawing.Size(156, 29);
             this.txtSearchBook.TabIndex = 49;
             // 
-            // textBox13
+            // txtBookStockCustomerWants
             // 
-            this.textBox13.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox13.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox13.ForeColor = System.Drawing.Color.Black;
-            this.textBox13.Location = new System.Drawing.Point(695, 547);
-            this.textBox13.Multiline = true;
-            this.textBox13.Name = "textBox13";
-            this.textBox13.ReadOnly = true;
-            this.textBox13.Size = new System.Drawing.Size(89, 21);
-            this.textBox13.TabIndex = 50;
-            this.textBox13.Text = "Books to Sell:";
+            this.txtBookStockCustomerWants.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBookStockCustomerWants.Location = new System.Drawing.Point(379, 442);
+            this.txtBookStockCustomerWants.Multiline = true;
+            this.txtBookStockCustomerWants.Name = "txtBookStockCustomerWants";
+            this.txtBookStockCustomerWants.Size = new System.Drawing.Size(91, 36);
+            this.txtBookStockCustomerWants.TabIndex = 51;
             // 
-            this.btnSellBook.Location = new System.Drawing.Point(647, 608);
-            this.btnSellBook.Margin = new System.Windows.Forms.Padding(4);
+            // btnSellBook
+            // 
+            this.btnSellBook.AutoSize = true;
+            this.btnSellBook.Location = new System.Drawing.Point(379, 484);
             this.btnSellBook.Name = "btnSellBook";
-            this.btnSellBook.Size = new System.Drawing.Size(101, 44);
+            this.btnSellBook.Size = new System.Drawing.Size(91, 38);
             this.btnSellBook.TabIndex = 52;
             this.btnSellBook.Text = "Sell Book";
             this.btnSellBook.UseVisualStyleBackColor = true;
@@ -524,8 +521,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1259, 662);
-            this.Controls.Add(this.textBox13);
+            this.ClientSize = new System.Drawing.Size(947, 538);
+            this.Controls.Add(this.btnSellBook);
+            this.Controls.Add(this.txtBookStockCustomerWants);
             this.Controls.Add(this.txtSearchBook);
             this.Controls.Add(this.cmbSearchCatBook);
             this.Controls.Add(this.btnResetBookSearch);
