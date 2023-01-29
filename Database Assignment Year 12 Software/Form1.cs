@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using System.IO;
 
 namespace Vigils_book
 {
@@ -15,7 +16,52 @@ namespace Vigils_book
     {
         string selectedCustomerID = "";
         string selectedBookISBN = "";
-        string selectedCustomerBookISBN = "";
+       
+        
+        //Create original size for Ui Elements
+        private Rectangle originalFormSize;
+        private Rectangle btnSellBookOriginalRectangle;
+        private Rectangle btnChangeBookOriginalRectangle;
+        private Rectangle btnRemoveBookOriginalRectangle; 
+        private Rectangle btnSearchBookOriginalRectangle;
+        private Rectangle dgvBookListOriginalRectangle;
+        private Rectangle dgvCustomerInformationOriginalRectangle;
+        private Rectangle txtBookStockCustomerWantsOriginalRectangle; 
+        private Rectangle btnResetBookSearchOriginalRectangle;
+        private Rectangle btnChangeCustomerInformationOriginalRectangle;
+        private Rectangle btnRemoveCustomerOriginalRectangle;
+        private Rectangle txtReplaceCustomerPhoneNumberOriginalRectangle;
+        private Rectangle txtLabelAddReplaceCustomePhoneOriginalRectangle;
+        private Rectangle txtReplaceCustomerLastNameOriginalRectangle;
+        private Rectangle txtLabelCustomerLastNameOriginalRectangle;
+        private Rectangle cmbSearchCatBookOriginalRectangle;
+        private Rectangle txtSearchBookOriginalRectangle;
+        private Rectangle txtReplaceCustomerNameOriginalRectangle;
+        private Rectangle txtLabelAddReplaceCustomerNameOriginalRectangle;
+        private Rectangle txtReplaceBookPriceOriginalRectangle;
+        private Rectangle txtLabelBookPriceOriginalRectangle;
+        private Rectangle txtReplaceBookStockOriginalRectangle;
+        private Rectangle txtReplaceBookPublisherOriginalRectangle;
+        private Rectangle txtLabelBookStockOriginalRectangle;
+        private Rectangle txtLabelBookPublisherOriginalRectangle;
+        private Rectangle txtReplaceBookYearOfPublicationOriginalRectangle;
+        private Rectangle txtReplaceBookAuthorOriginalRectangle;
+        private Rectangle txtLabelYearOfPubOriginalRectangle;
+        private Rectangle txtBookAuthorOriginalRectangle;
+        private Rectangle txtReplaceBookTitleOriginalRectangle;
+        private Rectangle txtReplaceBookISBNOriginalRectangle;
+        private Rectangle txtLabelISBNOriginalRectangle;
+        private Rectangle txtLabelTitleOriginalRectangle;
+        private Rectangle btnSearchCustomerOriginalRectangle;
+        private Rectangle btnResetCustomerSearchOriginalRectangle;
+        private Rectangle txtSearchCustomerOriginalRectangle;
+        private Rectangle txtLabelSearchCustomerOriginalRectangle;
+        private Rectangle cmbSearchCatCustomerOriginalRectangle;
+        private Rectangle txtLabelCustomerSearchTypeOriginalRectangle;
+
+
+
+
 
 
 
@@ -27,6 +73,47 @@ namespace Vigils_book
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Define original element location and size
+            originalFormSize = new Rectangle(this.Location.X, this.Location.Y, this.Width, this.Height);
+            btnSellBookOriginalRectangle = new Rectangle(btnSellBook.Location.X, btnSellBook.Location.Y, btnSellBook.Width, btnSellBook.Height);
+            btnChangeBookOriginalRectangle = new Rectangle(btnChangeBook.Location.X, btnChangeBook.Location.Y, btnChangeBook.Width, btnChangeBook.Height);
+            btnRemoveBookOriginalRectangle = new Rectangle(btnRemoveBook.Location.X, btnRemoveBook.Location.Y, btnRemoveBook.Width, btnRemoveBook.Height);
+            dgvBookListOriginalRectangle = new Rectangle(dgvBookList.Location.X, dgvBookList.Location.Y, dgvBookList.Width, dgvBookList.Height);
+            dgvCustomerInformationOriginalRectangle = new Rectangle(dgvCustomerInformation.Location.X, dgvCustomerInformation.Location.Y, dgvCustomerInformation.Width, dgvCustomerInformation.Height);
+            txtBookStockCustomerWantsOriginalRectangle = new Rectangle(txtBookStockCustomerWants.Location.X, txtBookStockCustomerWants.Location.Y, txtBookStockCustomerWants.Width, txtBookStockCustomerWants.Height);
+            btnSearchBookOriginalRectangle = new Rectangle(btnSearchBook.Location.X, btnSearchBook.Location.Y, btnSearchBook.Width, btnSearchBook.Height);
+            btnResetBookSearchOriginalRectangle = new Rectangle(btnResetBookSearch.Location.X, btnResetBookSearch.Location.Y, btnResetBookSearch.Width, btnResetBookSearch.Height);
+            btnChangeCustomerInformationOriginalRectangle = new Rectangle(btnChangeCustomerInformation.Location.X, btnChangeCustomerInformation.Location.Y, btnResetBookSearch.Width, btnChangeCustomerInformation.Height);
+            btnRemoveCustomerOriginalRectangle = new Rectangle(btnRemoveCustomer.Location.X, btnRemoveCustomer.Location.Y, btnRemoveCustomer.Width, btnRemoveCustomer.Height);
+            txtReplaceCustomerPhoneNumberOriginalRectangle = new Rectangle(txtReplaceCustomerPhoneNumber.Location.X, txtReplaceCustomerPhoneNumber.Location.Y, txtReplaceCustomerPhoneNumber.Width, txtReplaceCustomerPhoneNumber.Height);
+            txtLabelAddReplaceCustomePhoneOriginalRectangle = new Rectangle(txtLabelAddReplaceCustomePhone.Location.X, txtLabelAddReplaceCustomePhone.Location.Y, txtLabelAddReplaceCustomePhone.Width, txtLabelAddReplaceCustomePhone.Height);
+            txtReplaceCustomerLastNameOriginalRectangle = new Rectangle(txtReplaceCustomerLastName.Location.X, txtReplaceCustomerLastName.Location.Y, txtReplaceCustomerLastName.Width, txtReplaceCustomerLastName.Height);
+            txtLabelCustomerLastNameOriginalRectangle = new Rectangle(txtLabelCustomerLastName.Location.X, txtLabelCustomerLastName.Location.Y, txtLabelCustomerLastName.Width, txtLabelCustomerLastName.Height);
+            cmbSearchCatBookOriginalRectangle = new Rectangle(cmbSearchCatBook.Location.X, cmbSearchCatBook.Location.Y, cmbSearchCatBook.Width, cmbSearchCatBook.Height);
+            txtSearchBookOriginalRectangle = new Rectangle(txtSearchBook.Location.X, txtSearchBook.Location.Y, txtSearchBook.Width, txtSearchBook.Height);
+            txtReplaceCustomerNameOriginalRectangle = new Rectangle(txtReplaceCustomerName.Location.X, txtReplaceCustomerName.Location.Y, txtReplaceCustomerName.Width, txtReplaceCustomerName.Height);
+            txtLabelAddReplaceCustomerNameOriginalRectangle = new Rectangle(txtLabelAddReplaceCustomerName.Location.X, txtLabelAddReplaceCustomerName.Location.Y, txtLabelAddReplaceCustomerName.Width, txtLabelAddReplaceCustomerName.Height);
+            txtReplaceBookPriceOriginalRectangle = new Rectangle(txtReplaceBookPrice.Location.X, txtReplaceBookPrice.Location.Y, txtReplaceBookPrice.Width, txtReplaceBookPrice.Height);
+            txtLabelBookPriceOriginalRectangle = new Rectangle(txtLabelBookPrice.Location.X, txtLabelBookPrice.Location.Y, txtLabelBookPrice.Width, txtLabelBookPrice.Height);
+            txtReplaceBookStockOriginalRectangle = new Rectangle(txtReplaceBookStock.Location.X, txtReplaceBookStock.Location.Y, txtReplaceBookStock.Width, txtReplaceBookStock.Height);
+            txtReplaceBookPublisherOriginalRectangle = new Rectangle(txtReplaceBookPublisher.Location.X, txtReplaceBookPublisher.Location.Y, txtReplaceBookPublisher.Width, txtReplaceBookPublisher.Height);
+            txtLabelBookStockOriginalRectangle = new Rectangle(txtLabelBookStock.Location.X, txtLabelBookStock.Location.Y, txtLabelBookStock.Width, txtLabelBookStock.Height);
+            txtLabelBookPublisherOriginalRectangle = new Rectangle(txtLabelBookPublisher.Location.X, txtLabelBookPublisher.Location.Y, txtLabelBookPublisher.Width, txtLabelBookPublisher.Height);
+            txtReplaceBookYearOfPublicationOriginalRectangle = new Rectangle(txtReplaceBookYearOfPublication.Location.X, txtReplaceBookYearOfPublication.Location.Y, txtReplaceBookYearOfPublication.Width, txtReplaceBookYearOfPublication.Height);
+            txtReplaceBookAuthorOriginalRectangle = new Rectangle(txtReplaceBookAuthor.Location.X, txtReplaceBookAuthor.Location.Y, txtReplaceBookAuthor.Width, txtReplaceBookAuthor.Height);
+            txtLabelYearOfPubOriginalRectangle = new Rectangle(txtLabelYearOfPub.Location.X, txtLabelYearOfPub.Location.Y, txtLabelYearOfPub.Width, txtLabelYearOfPub.Height);
+            txtBookAuthorOriginalRectangle = new Rectangle(txtBookAuthor.Location.X, txtBookAuthor.Location.Y, txtBookAuthor.Width, txtBookAuthor.Height);
+            txtReplaceBookTitleOriginalRectangle = new Rectangle(txtReplaceBookTitle.Location.X, txtReplaceBookTitle.Location.Y, txtReplaceBookTitle.Width, txtReplaceBookTitle.Height);
+            txtReplaceBookISBNOriginalRectangle = new Rectangle(txtReplaceBookISBN.Location.X, txtReplaceBookISBN.Location.Y, txtReplaceBookISBN.Width, txtReplaceBookISBN.Height);
+            txtLabelISBNOriginalRectangle = new Rectangle(txtLabelISBN.Location.X, txtLabelISBN.Location.Y, txtLabelISBN.Width, txtLabelISBN.Height);
+            txtLabelTitleOriginalRectangle = new Rectangle(txtLabelTitle.Location.X, txtLabelTitle.Location.Y, txtLabelTitle.Width, txtLabelTitle.Height);
+            btnSearchCustomerOriginalRectangle = new Rectangle(btnSearchCustomer.Location.X, btnSearchCustomer.Location.Y, btnSearchCustomer.Width, btnSearchCustomer.Height);
+            btnResetCustomerSearchOriginalRectangle = new Rectangle(btnResetCustomerSearch.Location.X, btnResetCustomerSearch.Location.Y, btnResetCustomerSearch.Width, btnResetCustomerSearch.Height);
+            txtSearchCustomerOriginalRectangle = new Rectangle(txtSearchCustomer.Location.X, txtSearchCustomer.Location.Y, txtSearchCustomer.Width, txtSearchCustomer.Height);
+            txtLabelSearchCustomerOriginalRectangle = new Rectangle(txtLabelSearchCustomer.Location.X, txtLabelSearchCustomer.Location.Y, txtLabelSearchCustomer.Width, txtLabelSearchCustomer.Height);
+            cmbSearchCatCustomerOriginalRectangle = new Rectangle(cmbSearchCatCustomer.Location.X, cmbSearchCatCustomer.Location.Y, cmbSearchCatCustomer.Width, cmbSearchCatCustomer.Height);
+            txtLabelCustomerSearchTypeOriginalRectangle = new Rectangle(txtLabelCustomerSearchType.Location.X, txtLabelCustomerSearchType.Location.Y, txtLabelCustomerSearchType.Width, txtLabelCustomerSearchType.Height);
+
             ReadData();
 
             cmbSearchCatCustomer.SelectedIndex = 0;
@@ -41,28 +128,22 @@ namespace Vigils_book
 
             string commandTextBookList = "Select * From BookList";
             string commandTextCustomerInformation = "Select * From CustomerList";
-            string commandTextCustomerBooks = "Select * From CustomerBooks";
 
             var datatableBooks = new DataTable();
             var datatableCustomerInformation = new DataTable();
-            var datatableCustomerBooks = new DataTable();
 
-            
+
             SQLiteDataAdapter myDataAdapterBooks = new SQLiteDataAdapter(commandTextBookList, sqlConnection);
             SQLiteDataAdapter myDataAdapterCustomerInformation = new SQLiteDataAdapter(commandTextCustomerInformation, sqlConnection);
-            SQLiteDataAdapter myDataAdapterCustomerBooks = new SQLiteDataAdapter(commandTextCustomerBooks, sqlConnection);
 
             //Open the connection to the database
             sqlConnection.Open();
-
             myDataAdapterBooks.Fill(datatableBooks);
             myDataAdapterCustomerInformation.Fill(datatableCustomerInformation);
-            myDataAdapterCustomerBooks.Fill(datatableCustomerBooks);
             sqlConnection.Close();
-            
+
             dgvBookList.DataSource = datatableBooks;
             dgvCustomerInformation.DataSource = datatableCustomerInformation;
-            dgvCustomerBooks.DataSource = datatableCustomerBooks;
         }
 
 
@@ -153,6 +234,7 @@ namespace Vigils_book
             myDataAdapterCustomerInformation.Fill(datatableCustomerInformation);
             sqlConnection.Close();
             dgvCustomerInformation.DataSource = datatableCustomerInformation;
+
         }
 
         private void BtnChangeCustomerInformation_Click(object sender, EventArgs e)
@@ -208,7 +290,7 @@ namespace Vigils_book
 
             string commandTextSearchCustomer = "Select * FROM CustomerList WHERE " + cmbSearchCatCustomer.Text + " LIKE'%" + txtSearchCustomer.Text + "%'";
 
-            
+
 
             var datatable = new DataTable();
             SQLiteDataAdapter myDataAdapter = new SQLiteDataAdapter(commandTextSearchCustomer, sqlConnection);
@@ -301,7 +383,7 @@ namespace Vigils_book
             sqlConnection.Open();
             sqlCommandChangeCustomerInformation.ExecuteNonQuery();
             sqlConnection.Close();
-            MessageBox.Show("Your Customer data is updated", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Your Book data is updated", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
             string commandTextBookList = "Select * From BookList";
@@ -388,7 +470,7 @@ namespace Vigils_book
             }
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        private void btnSearchBook_Click(object sender, EventArgs e)
         {
             SQLiteConnection sqlConnection = new SQLiteConnection();
             sqlConnection.ConnectionString = "DataSource = bookList.db";
@@ -409,6 +491,7 @@ namespace Vigils_book
             if (dgvBookList.Rows.Count <= 1)
             {
                 MessageBox.Show("There are no books with this information.");
+                txtSearchBook.Clear();
             }
         }
 
@@ -433,240 +516,141 @@ namespace Vigils_book
 
         }
 
-        private void btnAddCustomerBook_Click(object sender, EventArgs e)
+        private void btnSellBook_Click(object sender, EventArgs e)
         {
-            SQLiteConnection sqlConnectionBookList = new SQLiteConnection();
-            SQLiteConnection sqlConnectionCustomerBooksList = new SQLiteConnection();
-            SQLiteCommand sqlCommandInsertCustomerBookInformation = new SQLiteCommand();
+            SQLiteConnection sqlConnection = new SQLiteConnection();
+            sqlConnection.ConnectionString = "DataSource = bookList.db";
 
-            sqlConnectionBookList.ConnectionString = "DataSource = bookList.db";
-            sqlConnectionCustomerBooksList.ConnectionString = "DataSource = bookList.db";
-
-
-            sqlCommandInsertCustomerBookInformation.Connection = sqlConnectionCustomerBooksList;
-            sqlCommandInsertCustomerBookInformation.CommandType = CommandType.Text;
-            sqlCommandInsertCustomerBookInformation.CommandText = "INSERT into CustomerBooks (ISBN, bookTitle, bookAuthor, bookYearOfPublication, bookPublisher, bookStockWanted, bookPrice) values(@ISBN, @bookTitle, @bookAuthor, @bookYearOfPublication, @bookPublisher, @bookStockWanted, @bookPrice)";
-            sqlCommandInsertCustomerBookInformation.Parameters.AddWithValue("@ISBN", txtReplaceBookISBN.Text);
-            sqlCommandInsertCustomerBookInformation.Parameters.AddWithValue("@bookTitle", txtReplaceBookTitle.Text);
-            sqlCommandInsertCustomerBookInformation.Parameters.AddWithValue("@bookAuthor", txtReplaceBookAuthor.Text);
-            sqlCommandInsertCustomerBookInformation.Parameters.AddWithValue("@bookYearOfPublication", txtReplaceBookYearOfPublication.Text);
-            sqlCommandInsertCustomerBookInformation.Parameters.AddWithValue("@bookPublisher", txtReplaceBookPublisher.Text);
-            sqlCommandInsertCustomerBookInformation.Parameters.AddWithValue("@bookStockWanted", txtCustomerStockWanted.Text);
-            sqlCommandInsertCustomerBookInformation.Parameters.AddWithValue("@bookPrice", txtReplaceBookPrice.Text);
 
             int wantedStock;
             int totalStock;
             string finalStock;
-            int.TryParse(txtReplaceBookStock.Text, out totalStock);
+            double totalCost;
 
-            if (int.TryParse(txtCustomerStockWanted.Text, out wantedStock))
+            totalStock = Convert.ToInt32(txtReplaceBookStock.Text);
+            wantedStock = Convert.ToInt32(txtBookStockCustomerWants.Text);
+
+
+            if (txtReplaceCustomerName.Text != "")
             {
-                if (wantedStock < totalStock)
+                if (totalStock >= wantedStock)
                 {
-                    sqlConnectionCustomerBooksList.Open();
-                    sqlCommandInsertCustomerBookInformation.ExecuteNonQuery();
-                    sqlConnectionCustomerBooksList.Close();
+
+                    string finalCost = txtReplaceBookPrice.Text;
+                    finalCost = finalCost.Substring(1);
+                    Convert.ToDouble(finalCost);
+
+                    totalCost = Convert.ToDouble(wantedStock) * Convert.ToDouble(finalCost);
+
 
                     totalStock -= wantedStock;
                     finalStock = Convert.ToString(totalStock);
-
-
                     txtReplaceBookStock.Text = finalStock;
+
+
+                    string customerName = Convert.ToString(txtReplaceCustomerName.Text);
+                    string customerLastName = Convert.ToString(txtReplaceCustomerLastName.Text);
+                    string bookTitle = Convert.ToString(txtReplaceBookTitle.Text);
+
+                    MessageBox.Show(customerName + customerLastName + " wants to buy " + wantedStock + " copies of the book " + bookTitle + " are being sold. final price is $" + totalCost);
+                    txtBookStockCustomerWants.Text = "";
+
+
+                    StreamWriter sw = new StreamWriter("PastSales.txt");
+
+                    sw.WriteLine(customerName + customerLastName + " wants to buy " + wantedStock + " copies of the book " + bookTitle + " are being sold. final price is $" + totalCost);
+
+
+
                     UpdateBookRecord();
 
+                    if (dgvCustomerInformation.SelectedRows.Count > 0)
+                    {
+                        selectedCustomerID = dgvCustomerInformation.SelectedRows[0].Cells[0].Value.ToString();
+                        UpdateCustomerRecord();
+                    }
+                    else
+                    {
+                        InsertCustomer();
+                    }
 
-                    string commandTextBookList = "Select * From BookList";
-                    string commandTextCustomerBooks = "Select * From CustomerBooks";
-                    var datatableBookList = new DataTable();
-                    var datatableCustomerBooks = new DataTable();
-                    SQLiteDataAdapter myDataAdapterBookList = new SQLiteDataAdapter(commandTextBookList, sqlConnectionBookList);
-                    SQLiteDataAdapter myDataAdapterCustomerBooks = new SQLiteDataAdapter(commandTextCustomerBooks, sqlConnectionCustomerBooksList);
-                    myDataAdapterBookList.Fill(datatableBookList);
-                    myDataAdapterCustomerBooks.Fill(datatableCustomerBooks);
-                    dgvBookList.DataSource = datatableBookList;
-                    dgvCustomerBooks.DataSource = datatableCustomerBooks;
+
+                    ReadData();
                 }
                 else
                 {
-                    MessageBox.Show("There are not enough of this book.");
+                    MessageBox.Show("There are not enough of this book to buy.");
                 }
             }
             else
             {
-                MessageBox.Show("Book amount not valid.");
+                MessageBox.Show("Please select a customer.");
             }
         }
 
-        private void btnRemoveCustomerBook_Click(object sender, EventArgs e)
+        //Math for the resize location
+        private void resizeControl(Rectangle r, Control c)
         {
-            
+            float xRatio = (float)(this.Width) / (float)(originalFormSize.Width);
+            float yRatio = (float)(this.Height) / (float)(originalFormSize.Height);
 
-            if (MessageBox.Show("Are you sure you want to remove this book?", "Confirmation", MessageBoxButtons.OKCancel) == DialogResult.OK)
-            {
-                { /*
-                    int currentStock = Convert.ToInt32(txtReplaceBookStock.Text);
-                    int customerStockToReturn = Convert.ToInt32(txtCustomerStockWanted.Text);
+            int newX = (int)(r.Location.X * xRatio);
+            int newY = (int)(r.Location.Y * yRatio);
 
-                    int finalStock = currentStock + customerStockToReturn;
+            int newWidth = (int)(r.Width * xRatio);
+            int newHeight = (int)(r.Height * yRatio);
 
-                    txtReplaceBookStock.Text = Convert.ToString(finalStock);
-                    */
-
-
-                    /*
-                    SQLiteConnection sqlConnection = new SQLiteConnection();
-                    sqlConnection.ConnectionString = "DataSource = bookList.db";
-
-                    SQLiteCommand sqlCommandAddBooksBackToBookList = new SQLiteCommand();
-                    SQLiteCommand sqlCommandRemoveBookFromCustomer = new SQLiteCommand();
-
-
-                    UpdateBookRecord();
-
-
-                    sqlCommandRemoveBookFromCustomer.Connection = sqlConnection;
-                    sqlCommandRemoveBookFromCustomer.CommandType = CommandType.Text;
-                    sqlCommandRemoveBookFromCustomer.CommandText = "DELETE FROM CustomerBooks WHERE ISBN=@ISBN";
-                    sqlCommandRemoveBookFromCustomer.Parameters.AddWithValue("@ISBN", selectedCustomerBookISBN);
-
-
-                    sqlConnection.Open();
-                    sqlCommandAddBooksBackToBookList.ExecuteNonQuery();
-                    sqlConnection.Close();
-
-
-                    ReadData();
-                    */
-                }
-
-
-                int currentStock = Convert.ToInt32(txtReplaceBookStock.Text);
-                int customerStockToReturn = Convert.ToInt32(txtCustomerStockWanted.Text);
-
-                int totalStock = currentStock + customerStockToReturn;
-
-                txtReplaceBookStock.Text = totalStock.ToString();
-
-
-
-            }
-
-
-
-
-
-
-
+            c.Location = new Point(newX, newY);
+            c.Size = new Size(newWidth, newHeight);
         }
 
-        private void btnSellBooks_Click(object sender, EventArgs e)
+        //Calls for resizing
+        private void Form1_Resize(object sender, EventArgs e)
         {
-            {
-                /*
-                SQLiteConnection sqlConnection = new SQLiteConnection();
-                sqlConnection.ConnectionString = "DataSource = bookList.db";
+            resizeControl(btnSellBookOriginalRectangle, btnSellBook);
+            resizeControl(btnChangeBookOriginalRectangle, btnChangeBook);
+            resizeControl(btnRemoveBookOriginalRectangle, btnRemoveBook);
+            resizeControl(dgvBookListOriginalRectangle, dgvBookList);
+            resizeControl(dgvCustomerInformationOriginalRectangle, dgvCustomerInformation);
+            resizeControl(txtBookStockCustomerWantsOriginalRectangle, txtBookStockCustomerWants); 
+            resizeControl(btnSearchBookOriginalRectangle, btnSearchBook);
+            resizeControl(btnResetBookSearchOriginalRectangle, btnResetBookSearch);
+            resizeControl(btnChangeCustomerInformationOriginalRectangle, btnChangeCustomerInformation);
+            resizeControl(btnRemoveCustomerOriginalRectangle, btnRemoveCustomer);
+            resizeControl(txtReplaceCustomerPhoneNumberOriginalRectangle, txtReplaceCustomerPhoneNumber);
+            resizeControl(txtLabelAddReplaceCustomePhoneOriginalRectangle, txtLabelAddReplaceCustomePhone);
+            resizeControl(txtReplaceCustomerLastNameOriginalRectangle, txtReplaceCustomerLastName);
+            resizeControl(txtLabelCustomerLastNameOriginalRectangle, txtLabelCustomerLastName);
+            resizeControl(cmbSearchCatBookOriginalRectangle, cmbSearchCatBook);
+            resizeControl(txtSearchBookOriginalRectangle, txtSearchBook);
+            resizeControl(txtReplaceCustomerNameOriginalRectangle, txtReplaceCustomerName);
+            resizeControl(txtLabelAddReplaceCustomerNameOriginalRectangle, txtLabelAddReplaceCustomerName);
+            resizeControl(txtReplaceBookPriceOriginalRectangle, txtReplaceBookPrice);
+            resizeControl(txtLabelBookPriceOriginalRectangle, txtLabelBookPrice);
+            resizeControl(txtReplaceBookStockOriginalRectangle, txtReplaceBookStock);
+            resizeControl(txtReplaceBookPublisherOriginalRectangle, txtReplaceBookPublisher);
+            resizeControl(txtLabelBookStockOriginalRectangle, txtLabelBookStock);
+            resizeControl(txtLabelBookPublisherOriginalRectangle, txtLabelBookPublisher);
+            resizeControl(txtReplaceBookYearOfPublicationOriginalRectangle, txtReplaceBookYearOfPublication);
+            resizeControl(txtReplaceBookAuthorOriginalRectangle, txtReplaceBookAuthor);
+            resizeControl(txtLabelYearOfPubOriginalRectangle, txtLabelYearOfPub);
+            resizeControl(txtBookAuthorOriginalRectangle, txtBookAuthor);
+            resizeControl(txtReplaceBookTitleOriginalRectangle, txtReplaceBookTitle);
+            resizeControl(txtReplaceBookISBNOriginalRectangle, txtReplaceBookISBN);
+            resizeControl(txtLabelISBNOriginalRectangle, txtLabelISBN);
+            resizeControl(txtLabelTitleOriginalRectangle, txtLabelTitle);
+            resizeControl(btnSearchCustomerOriginalRectangle, btnSearchCustomer);
+            resizeControl(btnResetCustomerSearchOriginalRectangle, btnResetCustomerSearch);
+            resizeControl(txtSearchCustomerOriginalRectangle, txtSearchCustomer);
+            resizeControl(txtLabelSearchCustomerOriginalRectangle, txtLabelSearchCustomer);
+            resizeControl(cmbSearchCatCustomerOriginalRectangle, cmbSearchCatCustomer);
+            resizeControl(txtLabelCustomerSearchTypeOriginalRectangle, txtLabelCustomerSearchType);
 
 
-                string commandTextCustomerInformation = "Select * From CustomerList";
-                string commandTextCustomerBooks = "Select * From CustomerBooks";
-                string commandTextPastSales = "Select * From PastSales";
 
-
-
-
-                var datatableCustomerInformation = new DataTable();
-                var datatableCustomerBooks = new DataTable();
-                var datatablePastSales = new DataTable();
-
-                SQLiteDataAdapter myDataAdapterCustomerInformation = new SQLiteDataAdapter(commandTextCustomerInformation, sqlConnection);
-                SQLiteDataAdapter myDataAdapterCustomerBooks = new SQLiteDataAdapter(commandTextCustomerBooks, sqlConnection);
-                SQLiteDataAdapter myDataAdapterPastSales = new SQLiteDataAdapter(commandTextPastSales, sqlConnection);
-
-                myDataAdapterCustomerInformation.Fill(datatableCustomerInformation);
-                myDataAdapterCustomerBooks.Fill(datatableCustomerBooks);
-                myDataAdapterPastSales.Fill(datatablePastSales);
-
-                dgvCustomerInformation.DataSource = datatableCustomerInformation;
-                dgvCustomerBooks.DataSource = datatableCustomerBooks;
-                */
-            }
-
-            { 
-            /*
-            SQLiteConnection sqlConnection = new SQLiteConnection();
-            sqlConnection.ConnectionString = "DataSource = bookList.db";
-
-
-            selectedCustomerID = dgvCustomerInformation.SelectedRows[0].Cells[0].Value.ToString();
-
-            string commandTextCustomerInformation = "SELECT * FROM CustomerList WHERE customerID=" + selectedCustomerID;
-            string commandTextCustomerBooks = "SELECT * FROM CustomerBooks WHERE ISBN=@ISBN";
-
-            var datatableCustomerBooks = new DataTable();
-            var datatableCustomerInformation = new DataTable();
-
-            SQLiteDataAdapter myDataAdapterCustomerInformation = new SQLiteDataAdapter(commandTextCustomerInformation, sqlConnection);
-            SQLiteDataAdapter myDataAdapterCustomerBooks = new SQLiteDataAdapter(commandTextCustomerInformation, sqlConnection);
-
-            sqlConnection.Open();
-
-            myDataAdapterCustomerInformation.Fill(datatableCustomerBooks);
-
-            string customerFirstName = datatableCustomerInformation.Rows[0]["customerFirstName"].ToString();
-            string customerLasName = datatableCustomerInformation.Rows[0]["customerLastName"].ToString();
-            string bookTitle = datatableCustomerInformation.Rows[0][""].ToString();
-
-            sqlConnection.Close();
-            */
-        }
-
-
-        
-
-            var textFileForSoldBooks = new StringBuilder();
-
-            for(int i = 0;  i < dgvCustomerBooks.Rows.Count - 1; i++)
-            {
-                string line = "";
-                for (int j = 0; j < dgvCustomerBooks.Columns.Count; j++)
-                {
-                    line += dgvCustomerBooks.Rows[i].Cells[j].Value.ToString() + "\t" + "|";
-                }
-                textFileForSoldBooks.AppendLine(line);
-            }
-
-            string fileName = @"soldBookList"
-            System.IO.File.WriteAllText(fileName, textFileForSoldBooks.ToString());
-
-        }
-
-        private void dgvCustomerBooks_SelectionChanged(object sender, EventArgs e)
-        {
-            SQLiteConnection sqlConnection = new SQLiteConnection();
-            sqlConnection.ConnectionString = "DataSource = bookList.db";
-
-
-            if (dgvCustomerBooks.SelectedRows.Count > 0)
-            {
-                selectedCustomerBookISBN = dgvCustomerBooks.SelectedRows[0].Cells[0].Value.ToString();
-
-                string commandTextCustomerBooks = "SELECT * FROM CustomerBooks WHERE ISBN=" + selectedCustomerBookISBN;
-
-                var datatableCustomerBooks = new DataTable();
-                SQLiteDataAdapter myDataAdapterBookList = new SQLiteDataAdapter(commandTextCustomerBooks, sqlConnection);
-
-                sqlConnection.Open();
-
-                myDataAdapterBookList.Fill(datatableCustomerBooks);
-
-                txtCustomerStockWanted.Text = datatableCustomerBooks.Rows[0]["bookStockWanted"].ToString();
-
-                sqlConnection.Close();
-            }
 
 
 
         }
-
     }
 }
