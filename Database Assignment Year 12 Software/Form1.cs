@@ -526,65 +526,82 @@ namespace Vigils_book
             int totalStock;
             string finalStock;
             double totalCost;
+            
+            StreamWriter sw = new StreamWriter("PastSales.txt", true);
 
             totalStock = Convert.ToInt32(txtReplaceBookStock.Text);
-            wantedStock = Convert.ToInt32(txtBookStockCustomerWants.Text);
-
-
-            if (txtReplaceCustomerName.Text != "")
+            if (txtBookStockCustomerWants.Text == "")
             {
-                if (totalStock >= wantedStock)
-                {
-
-                    string finalCost = txtReplaceBookPrice.Text;
-                    finalCost = finalCost.Substring(1);
-                    Convert.ToDouble(finalCost);
-
-                    totalCost = Convert.ToDouble(wantedStock) * Convert.ToDouble(finalCost);
-
-
-                    totalStock -= wantedStock;
-                    finalStock = Convert.ToString(totalStock);
-                    txtReplaceBookStock.Text = finalStock;
-
-
-                    string customerName = Convert.ToString(txtReplaceCustomerName.Text);
-                    string customerLastName = Convert.ToString(txtReplaceCustomerLastName.Text);
-                    string bookTitle = Convert.ToString(txtReplaceBookTitle.Text);
-
-                    MessageBox.Show(customerName + customerLastName + " wants to buy " + wantedStock + " copies of the book " + bookTitle + " are being sold. final price is $" + totalCost);
-                    txtBookStockCustomerWants.Text = "";
-
-
-                    StreamWriter sw = new StreamWriter("PastSales.txt");
-
-                    sw.WriteLine(customerName + customerLastName + " wants to buy " + wantedStock + " copies of the book " + bookTitle + " are being sold. final price is $" + totalCost);
-
-
-
-                    UpdateBookRecord();
-
-                    if (dgvCustomerInformation.SelectedRows.Count > 0)
-                    {
-                        selectedCustomerID = dgvCustomerInformation.SelectedRows[0].Cells[0].Value.ToString();
-                        UpdateCustomerRecord();
-                    }
-                    else
-                    {
-                        InsertCustomer();
-                    }
-
-
-                    ReadData();
-                }
-                else
-                {
-                    MessageBox.Show("There are not enough of this book to buy.");
-                }
+                MessageBox.Show("Please enter the quantity of books being sold.");
             }
             else
             {
-                MessageBox.Show("Please select a customer.");
+                wantedStock = Convert.ToInt32(txtBookStockCustomerWants.Text);
+                if (txtReplaceCustomerName.Text != "")
+                {
+
+                    if (totalStock >= wantedStock)
+                    {
+
+                        string bookCost = txtReplaceBookPrice.Text;
+                        bookCost = bookCost.Substring(1);
+                        Convert.ToDouble(bookCost);
+
+                        totalCost = Convert.ToDouble(wantedStock) * Convert.ToDouble(bookCost);
+                        totalStock -= wantedStock;
+                        finalStock = Convert.ToString(totalStock);
+                        txtReplaceBookStock.Text = finalStock;
+
+
+                        string customerName = Convert.ToString(txtReplaceCustomerName.Text);
+                        string customerLastName = Convert.ToString(txtReplaceCustomerLastName.Text);
+                        string bookTitle = Convert.ToString(txtReplaceBookTitle.Text);
+
+
+                        int totalCostTwoDecimal = totalCost.ToString().Split('.').Count() > 1 ? totalCost.ToString().Split('.').ToList().ElementAt(1).Length : 0;
+                        if (totalCostTwoDecimal == 1)
+                        {
+                            MessageBox.Show(customerName + " " + customerLastName + " wants to buy " + wantedStock + " copies of the book " + bookTitle + " are being sold. final price is $" + totalCost + "0");
+
+                        }
+                        else
+                        {
+                            MessageBox.Show(customerName + " " + customerLastName + " wants to buy " + wantedStock + " copies of the book " + bookTitle + " are being sold. final price is $" + totalCost);
+                        }
+                            txtBookStockCustomerWants.Text = "";
+
+
+                      
+
+                        
+                        sw.WriteLine( DateTime.Now.ToString("yyyy/MM/dd ") + customerName + " " + customerLastName + " wants to buy " + wantedStock + " copies of the book " + bookTitle + " are being sold. final price is $" + totalCost);
+
+                        sw.Close();
+
+                        UpdateBookRecord();
+
+                        if (dgvCustomerInformation.SelectedRows.Count > 0)
+                        {
+                            selectedCustomerID = dgvCustomerInformation.SelectedRows[0].Cells[0].Value.ToString();
+                            UpdateCustomerRecord();
+                        }
+                        else
+                        {
+                            InsertCustomer();
+                        }
+
+
+                        ReadData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("There are not enough of this book to buy.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select a customer.");
+                }
             }
         }
 
