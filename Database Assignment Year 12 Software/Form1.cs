@@ -355,11 +355,6 @@ namespace Vigils_book
 
                 sqlConnection.Close();
             }
-
-
-
-
-
         }
 
         private void UpdateBookRecord()
@@ -371,14 +366,15 @@ namespace Vigils_book
 
             sqlCommandChangeCustomerInformation.Connection = sqlConnection;
             sqlCommandChangeCustomerInformation.CommandType = CommandType.Text;
-            sqlCommandChangeCustomerInformation.CommandText = "UPDATE BookList SET bookTitle=@bookTitle, bookAuthor=@bookAuthor, bookYearOfPublication=@bookYearOfPublication, bookPublisher=@bookPublisher, bookStock=@bookStock, bookPrice=@bookPrice WHERE ISBN=@ISBN";
+            sqlCommandChangeCustomerInformation.CommandText = "UPDATE BookList SET ISBN=@ISBN, bookTitle=@bookTitle, bookAuthor=@bookAuthor, bookYearOfPublication=@bookYearOfPublication, bookPublisher=@bookPublisher, bookStock=@bookStock, bookPrice=@bookPrice WHERE ISBN=@ISBN";
+            sqlCommandChangeCustomerInformation.Parameters.AddWithValue("@ISBN", txtReplaceBookISBN.Text);
             sqlCommandChangeCustomerInformation.Parameters.AddWithValue("@bookTitle", txtReplaceBookTitle.Text);
             sqlCommandChangeCustomerInformation.Parameters.AddWithValue("@bookAuthor", txtReplaceBookAuthor.Text);
             sqlCommandChangeCustomerInformation.Parameters.AddWithValue("@bookYearOfPublication", txtReplaceBookYearOfPublication.Text);
             sqlCommandChangeCustomerInformation.Parameters.AddWithValue("@bookPublisher", txtReplaceBookPublisher.Text);
             sqlCommandChangeCustomerInformation.Parameters.AddWithValue("@bookStock", txtReplaceBookStock.Text);
             sqlCommandChangeCustomerInformation.Parameters.AddWithValue("@bookPrice", txtReplaceBookPrice.Text);
-            sqlCommandChangeCustomerInformation.Parameters.AddWithValue("@ISBN", selectedBookISBN);
+
 
             sqlConnection.Open();
             sqlCommandChangeCustomerInformation.ExecuteNonQuery();
@@ -559,16 +555,23 @@ namespace Vigils_book
 
 
                         int totalCostTwoDecimal = totalCost.ToString().Split('.').Count() > 1 ? totalCost.ToString().Split('.').ToList().ElementAt(1).Length : 0;
-                        if (totalCostTwoDecimal == 1)
+
+                        if (totalCostTwoDecimal == 0)
+                        {
+                            MessageBox.Show(customerName + " " + customerLastName + " wants to buy " + wantedStock + " copies of the book " + bookTitle + " are being sold. final price is $" + totalCost + ".00");
+
+                        }
+                        else if (totalCostTwoDecimal == 1)
                         {
                             MessageBox.Show(customerName + " " + customerLastName + " wants to buy " + wantedStock + " copies of the book " + bookTitle + " are being sold. final price is $" + totalCost + "0");
 
                         }
-                        else
+                        else if (totalCostTwoDecimal == 2)
                         {
                             MessageBox.Show(customerName + " " + customerLastName + " wants to buy " + wantedStock + " copies of the book " + bookTitle + " are being sold. final price is $" + totalCost);
                         }
-                            txtBookStockCustomerWants.Text = "";
+                        
+                        txtBookStockCustomerWants.Text = "";
 
 
                       
@@ -668,6 +671,31 @@ namespace Vigils_book
 
 
 
+        }
+
+        private void txtReplaceBookPrice_TextChanged(object sender, EventArgs e)
+        {
+            char[] letters = {'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '`', '~', '!', '@', '#', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '"', ';', ':', '/', '?', '>', '<', ',', '[', ']', '{', '}'};
+            char[] dollar = { '$' };
+
+            bool priceContainsLetter = false; 
+            priceContainsLetter = txtReplaceBookPrice.Text.IndexOfAny(letters) >= 0;
+
+            
+            if (priceContainsLetter == true)
+            {
+                MessageBox.Show("Please enter price in form $0.00");
+                txtReplaceBookPrice.Text = ("");
+                
+                priceContainsLetter = false;
+            }
+
+
+            /*
+            if (txtReplaceBookISBN.Text.Contains("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"))
+            {
+                MessageBox.Show("Please enter only $ and price");
+            }*/
         }
     }
 }

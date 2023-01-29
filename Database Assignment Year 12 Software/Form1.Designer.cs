@@ -166,7 +166,7 @@
             // txtReplaceBookISBN
             // 
             this.txtReplaceBookISBN.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtReplaceBookISBN.Location = new System.Drawing.Point(9, 254);
+            this.txtReplaceBookISBN.Location = new System.Drawing.Point(9, 249);
             this.txtReplaceBookISBN.Multiline = true;
             this.txtReplaceBookISBN.Name = "txtReplaceBookISBN";
             this.txtReplaceBookISBN.Size = new System.Drawing.Size(116, 27);
@@ -175,7 +175,7 @@
             // txtReplaceBookAuthor
             // 
             this.txtReplaceBookAuthor.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtReplaceBookAuthor.Location = new System.Drawing.Point(9, 306);
+            this.txtReplaceBookAuthor.Location = new System.Drawing.Point(9, 302);
             this.txtReplaceBookAuthor.Multiline = true;
             this.txtReplaceBookAuthor.Name = "txtReplaceBookAuthor";
             this.txtReplaceBookAuthor.Size = new System.Drawing.Size(116, 27);
@@ -184,7 +184,7 @@
             // txtReplaceBookTitle
             // 
             this.txtReplaceBookTitle.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtReplaceBookTitle.Location = new System.Drawing.Point(127, 254);
+            this.txtReplaceBookTitle.Location = new System.Drawing.Point(127, 249);
             this.txtReplaceBookTitle.Multiline = true;
             this.txtReplaceBookTitle.Name = "txtReplaceBookTitle";
             this.txtReplaceBookTitle.Size = new System.Drawing.Size(116, 27);
@@ -193,7 +193,7 @@
             // txtReplaceBookYearOfPublication
             // 
             this.txtReplaceBookYearOfPublication.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtReplaceBookYearOfPublication.Location = new System.Drawing.Point(127, 306);
+            this.txtReplaceBookYearOfPublication.Location = new System.Drawing.Point(127, 302);
             this.txtReplaceBookYearOfPublication.Multiline = true;
             this.txtReplaceBookYearOfPublication.Name = "txtReplaceBookYearOfPublication";
             this.txtReplaceBookYearOfPublication.Size = new System.Drawing.Size(116, 27);
@@ -202,7 +202,7 @@
             // txtReplaceBookStock
             // 
             this.txtReplaceBookStock.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtReplaceBookStock.Location = new System.Drawing.Point(127, 358);
+            this.txtReplaceBookStock.Location = new System.Drawing.Point(127, 355);
             this.txtReplaceBookStock.Multiline = true;
             this.txtReplaceBookStock.Name = "txtReplaceBookStock";
             this.txtReplaceBookStock.Size = new System.Drawing.Size(116, 27);
@@ -211,7 +211,7 @@
             // txtReplaceBookPublisher
             // 
             this.txtReplaceBookPublisher.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtReplaceBookPublisher.Location = new System.Drawing.Point(9, 358);
+            this.txtReplaceBookPublisher.Location = new System.Drawing.Point(9, 355);
             this.txtReplaceBookPublisher.Multiline = true;
             this.txtReplaceBookPublisher.Name = "txtReplaceBookPublisher";
             this.txtReplaceBookPublisher.Size = new System.Drawing.Size(116, 27);
@@ -225,6 +225,7 @@
             this.txtReplaceBookPrice.Name = "txtReplaceBookPrice";
             this.txtReplaceBookPrice.Size = new System.Drawing.Size(116, 27);
             this.txtReplaceBookPrice.TabIndex = 17;
+            this.txtReplaceBookPrice.TextChanged += new System.EventHandler(this.txtReplaceBookPrice_TextChanged);
             // 
             // btnRemoveCustomer
             // 
@@ -247,7 +248,7 @@
             "customerLastName",
             "customerPhoneNumber"});
             this.cmbSearchCatCustomer.Location = new System.Drawing.Point(140, 61);
-            this.cmbSearchCatCustomer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbSearchCatCustomer.Margin = new System.Windows.Forms.Padding(2);
             this.cmbSearchCatCustomer.Name = "cmbSearchCatCustomer";
             this.cmbSearchCatCustomer.Size = new System.Drawing.Size(233, 21);
             this.cmbSearchCatCustomer.TabIndex = 29;
@@ -277,8 +278,8 @@
             this.txtLabelYearOfPub.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtLabelYearOfPub.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLabelYearOfPub.ForeColor = System.Drawing.Color.Black;
-            this.txtLabelYearOfPub.Location = new System.Drawing.Point(127, 281);
-            this.txtLabelYearOfPub.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLabelYearOfPub.Location = new System.Drawing.Point(127, 276);
+            this.txtLabelYearOfPub.Margin = new System.Windows.Forms.Padding(2);
             this.txtLabelYearOfPub.Multiline = true;
             this.txtLabelYearOfPub.Name = "txtLabelYearOfPub";
             this.txtLabelYearOfPub.ReadOnly = true;
@@ -292,8 +293,8 @@
             this.txtLabelTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtLabelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLabelTitle.ForeColor = System.Drawing.Color.Black;
-            this.txtLabelTitle.Location = new System.Drawing.Point(127, 229);
-            this.txtLabelTitle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLabelTitle.Location = new System.Drawing.Point(127, 223);
+            this.txtLabelTitle.Margin = new System.Windows.Forms.Padding(2);
             this.txtLabelTitle.Multiline = true;
             this.txtLabelTitle.Name = "txtLabelTitle";
             this.txtLabelTitle.ReadOnly = true;
@@ -307,8 +308,8 @@
             this.txtLabelISBN.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtLabelISBN.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLabelISBN.ForeColor = System.Drawing.Color.Black;
-            this.txtLabelISBN.Location = new System.Drawing.Point(9, 229);
-            this.txtLabelISBN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLabelISBN.Location = new System.Drawing.Point(9, 223);
+            this.txtLabelISBN.Margin = new System.Windows.Forms.Padding(2);
             this.txtLabelISBN.Multiline = true;
             this.txtLabelISBN.Name = "txtLabelISBN";
             this.txtLabelISBN.ReadOnly = true;
@@ -322,8 +323,8 @@
             this.txtBookAuthor.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtBookAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBookAuthor.ForeColor = System.Drawing.Color.Black;
-            this.txtBookAuthor.Location = new System.Drawing.Point(9, 281);
-            this.txtBookAuthor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBookAuthor.Location = new System.Drawing.Point(9, 276);
+            this.txtBookAuthor.Margin = new System.Windows.Forms.Padding(2);
             this.txtBookAuthor.Multiline = true;
             this.txtBookAuthor.Name = "txtBookAuthor";
             this.txtBookAuthor.ReadOnly = true;
@@ -337,7 +338,7 @@
             this.txtLabelBookPublisher.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtLabelBookPublisher.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLabelBookPublisher.ForeColor = System.Drawing.Color.Black;
-            this.txtLabelBookPublisher.Location = new System.Drawing.Point(9, 333);
+            this.txtLabelBookPublisher.Location = new System.Drawing.Point(9, 329);
             this.txtLabelBookPublisher.Margin = new System.Windows.Forms.Padding(0);
             this.txtLabelBookPublisher.Multiline = true;
             this.txtLabelBookPublisher.Name = "txtLabelBookPublisher";
@@ -352,8 +353,8 @@
             this.txtLabelBookStock.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtLabelBookStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLabelBookStock.ForeColor = System.Drawing.Color.Black;
-            this.txtLabelBookStock.Location = new System.Drawing.Point(127, 333);
-            this.txtLabelBookStock.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLabelBookStock.Location = new System.Drawing.Point(127, 329);
+            this.txtLabelBookStock.Margin = new System.Windows.Forms.Padding(2);
             this.txtLabelBookStock.Multiline = true;
             this.txtLabelBookStock.Name = "txtLabelBookStock";
             this.txtLabelBookStock.ReadOnly = true;
@@ -367,8 +368,8 @@
             this.txtLabelBookPrice.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtLabelBookPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLabelBookPrice.ForeColor = System.Drawing.Color.Black;
-            this.txtLabelBookPrice.Location = new System.Drawing.Point(9, 385);
-            this.txtLabelBookPrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLabelBookPrice.Location = new System.Drawing.Point(9, 382);
+            this.txtLabelBookPrice.Margin = new System.Windows.Forms.Padding(2);
             this.txtLabelBookPrice.Multiline = true;
             this.txtLabelBookPrice.Name = "txtLabelBookPrice";
             this.txtLabelBookPrice.ReadOnly = true;
@@ -395,7 +396,7 @@
             this.txtLabelAddReplaceCustomerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLabelAddReplaceCustomerName.ForeColor = System.Drawing.Color.Black;
             this.txtLabelAddReplaceCustomerName.Location = new System.Drawing.Point(647, 4);
-            this.txtLabelAddReplaceCustomerName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLabelAddReplaceCustomerName.Margin = new System.Windows.Forms.Padding(2);
             this.txtLabelAddReplaceCustomerName.Name = "txtLabelAddReplaceCustomerName";
             this.txtLabelAddReplaceCustomerName.ReadOnly = true;
             this.txtLabelAddReplaceCustomerName.Size = new System.Drawing.Size(160, 12);
@@ -409,7 +410,7 @@
             this.txtLabelCustomerLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLabelCustomerLastName.ForeColor = System.Drawing.Color.Black;
             this.txtLabelCustomerLastName.Location = new System.Drawing.Point(647, 61);
-            this.txtLabelCustomerLastName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLabelCustomerLastName.Margin = new System.Windows.Forms.Padding(2);
             this.txtLabelCustomerLastName.Name = "txtLabelCustomerLastName";
             this.txtLabelCustomerLastName.ReadOnly = true;
             this.txtLabelCustomerLastName.Size = new System.Drawing.Size(160, 12);
@@ -423,7 +424,7 @@
             this.txtLabelAddReplaceCustomePhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLabelAddReplaceCustomePhone.ForeColor = System.Drawing.Color.Black;
             this.txtLabelAddReplaceCustomePhone.Location = new System.Drawing.Point(647, 112);
-            this.txtLabelAddReplaceCustomePhone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLabelAddReplaceCustomePhone.Margin = new System.Windows.Forms.Padding(2);
             this.txtLabelAddReplaceCustomePhone.Name = "txtLabelAddReplaceCustomePhone";
             this.txtLabelAddReplaceCustomePhone.ReadOnly = true;
             this.txtLabelAddReplaceCustomePhone.Size = new System.Drawing.Size(188, 12);
@@ -437,7 +438,7 @@
             this.txtLabelSearchCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLabelSearchCustomer.ForeColor = System.Drawing.Color.Black;
             this.txtLabelSearchCustomer.Location = new System.Drawing.Point(140, 95);
-            this.txtLabelSearchCustomer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLabelSearchCustomer.Margin = new System.Windows.Forms.Padding(2);
             this.txtLabelSearchCustomer.Multiline = true;
             this.txtLabelSearchCustomer.Name = "txtLabelSearchCustomer";
             this.txtLabelSearchCustomer.ReadOnly = true;
@@ -452,7 +453,7 @@
             this.txtLabelCustomerSearchType.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLabelCustomerSearchType.ForeColor = System.Drawing.Color.Black;
             this.txtLabelCustomerSearchType.Location = new System.Drawing.Point(140, 39);
-            this.txtLabelCustomerSearchType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLabelCustomerSearchType.Margin = new System.Windows.Forms.Padding(2);
             this.txtLabelCustomerSearchType.Multiline = true;
             this.txtLabelCustomerSearchType.Name = "txtLabelCustomerSearchType";
             this.txtLabelCustomerSearchType.ReadOnly = true;
@@ -484,7 +485,7 @@
             "bookStock",
             "bookPrice"});
             this.cmbSearchCatBook.Location = new System.Drawing.Point(87, 446);
-            this.cmbSearchCatBook.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbSearchCatBook.Margin = new System.Windows.Forms.Padding(2);
             this.cmbSearchCatBook.Name = "cmbSearchCatBook";
             this.cmbSearchCatBook.Size = new System.Drawing.Size(156, 21);
             this.cmbSearchCatBook.TabIndex = 48;
