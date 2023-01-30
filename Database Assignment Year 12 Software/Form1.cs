@@ -14,6 +14,7 @@ namespace Vigils_book
 {
     public partial class Form1 : Form
     {
+        //String used to check if a record has been selscted
         string selectedCustomerID = "";
         string selectedBookISBN = "";
        
@@ -60,12 +61,7 @@ namespace Vigils_book
         private Rectangle txtLabelCustomerSearchTypeOriginalRectangle;
 
 
-
-
-
-
-
-
+        //Initilises the form
         public Form1()
         {
             InitializeComponent();
@@ -120,6 +116,7 @@ namespace Vigils_book
             cmbSearchCatBook.SelectedIndex = 0;
         }
 
+        //Updates both data grid views with no search functions
         private void ReadData()
         {
             SQLiteConnection sqlConnection = new SQLiteConnection();
@@ -146,8 +143,7 @@ namespace Vigils_book
             dgvCustomerInformation.DataSource = datatableCustomerInformation;
         }
 
-
-
+        //Function that adds the customer information to the customer information text boxes when a record is clicked
         private void dgvCustomerInformation_SelectionChanged(object sender, EventArgs e)
         {
             SQLiteConnection sqlConnection = new SQLiteConnection();
@@ -175,6 +171,7 @@ namespace Vigils_book
 
         }
 
+        //Function that adds a customer to the database
         private void InsertCustomer()
         {
             SQLiteConnection sqlConnection = new SQLiteConnection();
@@ -206,6 +203,7 @@ namespace Vigils_book
             dgvCustomerInformation.DataSource = datatableCustomerInformation;
         }
 
+        //Function that updates the record of the customer that is selected
         private void UpdateCustomerRecord()
         {
             SQLiteConnection sqlConnection = new SQLiteConnection();
@@ -237,6 +235,7 @@ namespace Vigils_book
 
         }
 
+        //Button that checks if the entered customer details is updating an existing record or adding a new one
         private void BtnChangeCustomerInformation_Click(object sender, EventArgs e)
         {
             if (dgvCustomerInformation.SelectedRows.Count > 0)
@@ -250,6 +249,7 @@ namespace Vigils_book
             }
         }
 
+        //Button that removes the selected customer from the database
         private void BtnRemoveCustomer_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to remove this customer?", "Confirmation", MessageBoxButtons.OKCancel) == DialogResult.OK)
@@ -282,6 +282,7 @@ namespace Vigils_book
             }
         }
 
+        //Button that searches the customer database based on the provided query
         private void BtnSearchCustomer_Click(object sender, EventArgs e)
         {
             SQLiteConnection sqlConnection = new SQLiteConnection();
@@ -307,6 +308,7 @@ namespace Vigils_book
             }
         }
 
+        //Button that resets the customer searching query
         private void btnResetCustomerSearch_Click(object sender, EventArgs e)
         {
             SQLiteConnection sqlConnection = new SQLiteConnection();
@@ -327,6 +329,7 @@ namespace Vigils_book
             txtSearchCustomer.Text = "";
         }
 
+        //Function that adds the book information to the book information text boxes when a record is clicked
         private void dgvBookList_SelectionChanged(object sender, EventArgs e)
         {
             SQLiteConnection sqlConnection = new SQLiteConnection();
@@ -357,6 +360,7 @@ namespace Vigils_book
             }
         }
 
+        //Function that updates the record of the book that is selected
         private void UpdateBookRecord()
         {
             SQLiteConnection sqlConnection = new SQLiteConnection();
@@ -390,6 +394,7 @@ namespace Vigils_book
             dgvBookList.DataSource = datatableBooks;
         }
 
+        //Button that checks if the entered book is updating an existing book or adding a new one
         private void btnChangeBook_Click(object sender, EventArgs e)
         {
             if (dgvBookList.SelectedRows.Count > 0)
@@ -403,6 +408,7 @@ namespace Vigils_book
             }
         }
 
+        //Function that adds a book to the database
         private void InsertBook()
         {
             SQLiteConnection sqlConnection = new SQLiteConnection();
@@ -436,6 +442,7 @@ namespace Vigils_book
             dgvBookList.DataSource = datatableBooks;
         }
 
+        //Button that removes the selected book from the database
         private void btnRemoveBook_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to remove this book from the database?", "Confirmation", MessageBoxButtons.OKCancel) == DialogResult.OK)
@@ -466,6 +473,7 @@ namespace Vigils_book
             }
         }
 
+        //Button that searches the book database based on the provided query
         private void btnSearchBook_Click(object sender, EventArgs e)
         {
             SQLiteConnection sqlConnection = new SQLiteConnection();
@@ -491,6 +499,7 @@ namespace Vigils_book
             }
         }
 
+        //Button that resets the book searching query
         private void btnResetBookSearch_Click(object sender, EventArgs e)
         {
             SQLiteConnection sqlConnection = new SQLiteConnection();
@@ -512,6 +521,7 @@ namespace Vigils_book
 
         }
 
+        //Button that sells the book to the customer
         private void btnSellBook_Click(object sender, EventArgs e)
         {
             SQLiteConnection sqlConnection = new SQLiteConnection();
@@ -558,27 +568,32 @@ namespace Vigils_book
 
                         if (totalCostTwoDecimal == 0)
                         {
-                            MessageBox.Show(customerName + " " + customerLastName + " wants to buy " + wantedStock + " copies of the book " + bookTitle + " are being sold. final price is $" + totalCost + ".00");
+                            MessageBox.Show(customerName + " " + customerLastName + " wants to buy " + wantedStock + " copies of the book " + bookTitle + ". The final price is $" + totalCost + ".00");
 
                         }
                         else if (totalCostTwoDecimal == 1)
                         {
-                            MessageBox.Show(customerName + " " + customerLastName + " wants to buy " + wantedStock + " copies of the book " + bookTitle + " are being sold. final price is $" + totalCost + "0");
+                            MessageBox.Show(customerName + " " + customerLastName + " wants to buy " + wantedStock + " copies of the book " + bookTitle + ". The final price is $" + totalCost + "0");
 
                         }
                         else if (totalCostTwoDecimal == 2)
                         {
-                            MessageBox.Show(customerName + " " + customerLastName + " wants to buy " + wantedStock + " copies of the book " + bookTitle + " are being sold. final price is $" + totalCost);
+                            MessageBox.Show(customerName + " " + customerLastName + " wants to buy " + wantedStock + " copies of the book " + bookTitle + ". The final price is $" + totalCost);
                         }
                         
+
+
+
+
+
+
                         txtBookStockCustomerWants.Text = "";
 
 
                       
 
                         
-                        sw.WriteLine( DateTime.Now.ToString("yyyy/MM/dd ") + customerName + " " + customerLastName + " wants to buy " + wantedStock + " copies of the book " + bookTitle + " are being sold. final price is $" + totalCost);
-
+                        sw.WriteLine(DateTime.Now.ToString("yyyy/MM/dd ") + "-  " + customerName + " " + customerLastName + " wants to buy " + wantedStock + " copies of the book " + bookTitle + ". The final price is $" + totalCost);
                         sw.Close();
 
                         UpdateBookRecord();
@@ -590,7 +605,7 @@ namespace Vigils_book
                         }
                         else
                         {
-                            InsertCustomer();
+                            UpdateCustomerRecord();
                         }
 
 
@@ -673,8 +688,10 @@ namespace Vigils_book
 
         }
 
+        //Disallows user to unput anything not allowed into the book price text box
         private void txtReplaceBookPrice_TextChanged(object sender, EventArgs e)
         {
+            
             char[] letters = {'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '`', '~', '!', '@', '#', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '"', ';', ':', '/', '?', '>', '<', ',', '[', ']', '{', '}'};
             char[] dollar = { '$' };
 
@@ -689,13 +706,6 @@ namespace Vigils_book
                 
                 priceContainsLetter = false;
             }
-
-
-            /*
-            if (txtReplaceBookISBN.Text.Contains("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"))
-            {
-                MessageBox.Show("Please enter only $ and price");
-            }*/
         }
     }
 }

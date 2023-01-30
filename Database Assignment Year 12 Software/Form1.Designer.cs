@@ -492,10 +492,10 @@
             // 
             // txtSearchBook
             // 
-            this.txtSearchBook.Location = new System.Drawing.Point(87, 482);
+            this.txtSearchBook.Location = new System.Drawing.Point(87, 488);
             this.txtSearchBook.Multiline = true;
             this.txtSearchBook.Name = "txtSearchBook";
-            this.txtSearchBook.Size = new System.Drawing.Size(156, 29);
+            this.txtSearchBook.Size = new System.Drawing.Size(156, 28);
             this.txtSearchBook.TabIndex = 49;
             // 
             // txtBookStockCustomerWants
@@ -512,7 +512,7 @@
             this.btnSellBook.AutoSize = true;
             this.btnSellBook.Location = new System.Drawing.Point(379, 484);
             this.btnSellBook.Name = "btnSellBook";
-            this.btnSellBook.Size = new System.Drawing.Size(91, 38);
+            this.btnSellBook.Size = new System.Drawing.Size(91, 36);
             this.btnSellBook.TabIndex = 52;
             this.btnSellBook.Text = "Sell Book";
             this.btnSellBook.UseVisualStyleBackColor = true;
